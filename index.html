@@ -1,19 +1,881 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
-</html>
+Here's a complete HTML file for a high-converting agency site for Pentara with all the requested features:
+
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentara | Full-Stack Development Agency</title>
+    <meta name="description" content="Pentara delivers high-performance web applications with React, Laravel, and modern DevOps. Partner with our expert 4-dev team for your next project.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@react-three/fiber@8.12.0/dist/react-three-fiber.umd.js"></script>
+    <script src="https://unpkg.com/three@0.148.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .rtl {
+            direction: rtl;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-3d-container {
+            height: 500px;
+            width: 100%;
+            position: relative;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="languageToggle" class="bg-white px-4 py-2 rounded-full shadow-md flex items-center gap-2 hover:bg-slate-100 transition">
+            <span id="languageText">العربية</span>
+            <i class="fas fa-language"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold gradient-text">Pentara</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#services" class="text-slate-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium">Services</a>
+                    <a href="#portfolio" class="text-slate-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium">Portfolio</a>
+                    <a href="#process" class="text-slate-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium">Process</a>
+                    <a href="#pricing" class="text-slate-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium">Pricing</a>
+                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md text-sm font-medium transition">Get Started</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button id="mobileMenuButton" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-slate-50">Services</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-slate-50">Portfolio</a>
+                <a href="#process" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-slate-50">Process</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-slate-50">Pricing</a>
+                <a href="#contact" class="block w-full text-center bg-emerald-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-emerald-700">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with 3D Animation -->
+    <section class="relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span class="gradient-text">Transform</span> Your Digital Presence
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 mb-8">
+                        Pentara's expert team delivers high-performance web applications with React, Laravel, and modern DevOps. Partner with us to build your next digital success story.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md text-lg font-medium transition shadow-lg hover:shadow-emerald-200">
+                            Start Your Project
+                        </a>
+                        <a href="#portfolio" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 px-6 py-3 rounded-md text-lg font-medium transition shadow hover:shadow-md">
+                            View Our Work
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Team member">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team member">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team member">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/76.jpg" alt="Team member">
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-700">Our 4-dev dream team</p>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-slate-600 ml-1">5.0 (24 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-3d-container">
+                    <div id="reactThreeFiberContainer" class="w-full h-full"></div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+            <svg class="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
+                <path fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)" fill-opacity=".2" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
+                <defs>
+                    <linearGradient id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4f46e5"></stop>
+                        <stop offset="1" stop-color="#10b981"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-slate-500 mb-8">Trusted by innovative companies worldwide</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+                <img src="https://via.placeholder.com/150x60?text=TechCorp" alt="TechCorp" class="h-8 opacity-60 hover:opacity-100 transition mx-auto">
+                <img src="https://via.placeholder.com/150x60?text=GlobalSoft" alt="GlobalSoft" class="h-10 opacity-60 hover:opacity-100 transition mx-auto">
+                <img src="https://via.placeholder.com/150x60?text=Innova" alt="Innova" class="h-12 opacity-60 hover:opacity-100 transition mx-auto">
+                <img src="https://via.placeholder.com/150x60?text=DataSystems" alt="DataSystems" class="h-9 opacity-60 hover:opacity-100 transition mx-auto">
+                <img src="https://via.placeholder.com/150x60?text=CloudNine" alt="CloudNine" class="h-11 opacity-60 hover:opacity-100 transition mx-auto">
+                <img src="https://via.placeholder.com/150x60?text=NextGen" alt="NextGen" class="h-10 opacity-60 hover:opacity-100 transition mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="gradient-text">Expertise</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">We combine cutting-edge technologies with proven methodologies to deliver exceptional results for our clients.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 card-hover">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
+                    <p class="text-slate-600 mb-4">Crafting pixel-perfect, responsive interfaces with React, Next.js, and Tailwind CSS that delight users and drive engagement.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                            <span>React & Next.js applications</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                            <span>Tailwind CSS & styled components</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                            <span>Performance optimization</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 card-hover">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Backend Development</h3>
+                    <p class="text-slate-600 mb-4">Building robust, scalable backend systems with Laravel, Node.js, and MySQL that power your business logic.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-500 mr-2"></i>
+                            <span>Laravel & PHP applications</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-500 mr-2"></i>
+                            <span>RESTful & GraphQL APIs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-500 mr-2"></i>
+                            <span>Database architecture</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 card-hover">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">DevOps & Cloud</h3>
+                    <p class="text-slate-600 mb-4">Automating deployments and scaling your infrastructure on AWS, GCP, or Azure with Docker and Terraform.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>CI/CD pipelines</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>Containerization with Docker</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>Infrastructure as Code</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 transition">
+                    Discuss Your Project
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tailored Solutions for <span class="gradient-text">Your Industry</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">We specialize in building custom applications that address specific business challenges across various sectors.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Use Case 1 -->
+                <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-indigo-50 to-emerald-50 p-8 h-full">
+                    <div class="absolute -right-10 -top-10 text-indigo-100 opacity-50">
+                        <i class="fas fa-graduation-cap text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-graduation-cap text-indigo-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Learning Management Systems</h3>
+                        <p class="text-slate-700 mb-6">Build engaging e-learning platforms with interactive content, progress tracking, and certification systems.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-indigo-500 mr-2"></i>
+                                <span>Course management</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-indigo-500 mr-2"></i>
+                                <span>Student progress tracking</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-indigo-500 mr-2"></i>
+                                <span>Interactive assessments</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800 transition">
+                            View LMS case studies
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Use Case 2 -->
+                <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-emerald-50 to-blue-50 p-8 h-full">
+                    <div class="absolute -right-10 -top-10 text-emerald-100 opacity-50">
+                        <i class="fas fa-shopping-cart text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-shopping-cart text-emerald-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">E-commerce Platforms</h3>
+                        <p class="text-slate-700 mb-6">Create high-converting online stores with seamless checkout, inventory management, and personalized recommendations.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Product catalogs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Payment integrations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Order management</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition">
+                            View e-commerce projects
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Use Case 3 -->
+                <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 p-8 h-full">
+                    <div class="absolute -right-10 -top-10 text-blue-100 opacity-50">
+                        <i class="fas fa-briefcase text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-briefcase text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Portfolio & Showcase Sites</h3>
+                        <p class="text-slate-700 mb-6">Showcase your work with stunning portfolio websites that highlight your brand and attract new clients.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-2"></i>
+                                <span>Visual galleries</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-2"></i>
+                                <span>Case study presentations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-2"></i>
+                                <span>Contact integration</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800 transition">
+                            View portfolio examples
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="gradient-text">Work</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Explore our recent projects and see how we've helped businesses like yours achieve their digital goals.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=EduPlatform" alt="EduPlatform" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-1">EduPlatform LMS</h3>
+                            <p class="text-slate-200 mb-3">A comprehensive learning management system for online education providers.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full">React</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Laravel</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6">
+                        <h3 class="text-lg font-bold mb-1">EduPlatform LMS</h3>
+                        <p class="text-slate-600 mb-3">Learning Management System</p>
+                        <a href="#" class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition">
+                            View case study
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=ShopNest" alt="ShopNest" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-1">ShopNest E-commerce</h3>
+                            <p class="text-slate-200 mb-3">A high-performance online store with advanced product filtering.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6">
+                        <h3 class="text-lg font-bold mb-1">ShopNest E-commerce</h3>
+                        <p class="text-slate-600 mb-3">Online Retail Platform</p>
+                        <a href="#" class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition">
+                            View case study
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=CreativePortfolio" alt="CreativePortfolio" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-1">Creative Portfolio</h3>
+                            <p class="text-slate-200 mb-3">A stunning portfolio website for a design agency with 3D elements.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full">React</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Three.js</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">GSAP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6">
+                        <h3 class="text-lg font-bold mb-1">Creative Portfolio</h3>
+                        <p class="text-slate-600 mb-3">Design Agency Showcase</p>
+                        <a href="#" class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition">
+                            View case study
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-slate-300 text-base font-medium rounded-md shadow-sm text-slate-700 bg-white hover:bg-slate-50 transition">
+                    View All Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Success <span class="gradient-text">Stories</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Discover how we've helped our clients overcome challenges and achieve measurable results.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Case Study 1 -->
+                <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="md:flex">
+                        <div class="md:flex-shrink-0 md:w-1/3">
+                            <img class="h-full w-full object-cover" src="https://via.placeholder.com/300x400?text=EduTech" alt="EduTech Case Study">
+                        </div>
+                        <div class="p-8 md:w-2/3">
+                            <div class="uppercase tracking-wide text-sm text-emerald-600 font-semibold mb-1">Education Technology</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Scaling an LMS for 50,000+ Users</h3>
+                            <p class="text-slate-600 mb-4">How we helped an online education platform handle rapid growth while maintaining performance.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full">+300% Performance</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">99.9% Uptime</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">AWS Architecture</span>
+                            </div>
+                            <a href="#" class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition">
+                                Read full case study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="bg-slate-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="md:flex">
+                        <div class="md:flex-shrink-0 md:w-1/3">
+                            <img class="h-full w-full object-cover" src="https://via.placeholder.com/300x400?text=E-commerce" alt="E-commerce Case Study">
+                        </div>
+                        <div class="p-8 md:w-2/3">
+                            <div class="uppercase tracking-wide text-sm text-indigo-600 font-semibold mb-1">E-commerce</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Revamping Checkout for Higher Conversions</h3>
+                            <p class="text-slate-600 mb-4">Our redesign and optimization of the checkout flow increased conversions by 42%.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full">+42% Conversions</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React Optimization</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Payment Integration</span>
+                            </div>
+                            <a href="#" class="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800 transition">
+                                Read full case study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 transition">
+                    View All Case Studies
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="gradient-text">Process</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">A transparent, collaborative approach that ensures your project's success from concept to launch.</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 h-full w-1 bg-gradient-to-b from-emerald-400 to-indigo-500 -ml-0.5"></div>
+                
+                <!-- Process Steps -->
+                <div class="space-y-12 md:space-y-16">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-emerald-400 flex items-center justify-center text-emerald-600 font-bold text-xl shadow-md z-10 mx-auto md:mx-0">1</div>
+                        <div class="mt-4 md:mt-0 md:ml-12 md:mr-12 md:w-1/2 md:text-right">
+                            <h3 class="text-xl font-bold text-slate-900">Discovery & Planning</h3>
+                            <p class="text-slate-600 mt-2">We dive deep into your business goals, target audience, and technical requirements to create a comprehensive project plan.</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-indigo-400 flex items-center justify-center text-indigo-600 font-bold text-xl shadow-md z-10 mx-auto md:mx-0">2</div>
+                        <div class="mt-4 md:mt-0 md:ml-12 md:w-1/2">
+                            <h3 class="text-xl font-bold text-slate-900">Design & Prototyping</h3>
+                            <p class="text-slate-600 mt-2">Our designers create wireframes and interactive prototypes to visualize the user experience before development begins.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-emerald-400 flex items-center justify-center text-emerald-600 font-bold text-xl shadow-md z-10 mx-auto md:mx-0">3</div>
+                        <div class="mt-4 md:mt-0 md:ml-12 md:mr-12 md:w-1/2 md:text-right">
+                            <h3 class="text-xl font-bold text-slate-900">Development</h3>
+                            <p class="text-slate-600 mt-2">Our developers build your application using modern technologies, with regular updates and opportunities for feedback.</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-indigo-400 flex items-center justify-center text-indigo-600 font-bold text-xl shadow-md z-10 mx-auto md:mx-0">4</div>
+                        <div class="mt-4 md:mt-0 md:ml-12 md:w-1/2">
+                            <h3 class="text-xl font-bold text-slate-900">Testing & QA</h3>
+                            <p class="text-slate-600 mt-2">We rigorously test your application across devices and scenarios to ensure flawless performance before launch.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white border-4 border-emerald-400 flex items-center justify-center text-emerald-600 font-bold text-xl shadow-md z-10 mx-auto md:mx-0">5</div>
+                        <div class="mt-4 md:mt-0 md:ml-12 md:mr-12 md:w-1/2 md:text-right">
+                            <h3 class="text-xl font-bold text-slate-900">Launch & Support</h3>
+                            <p class="text-slate-600 mt-2">We deploy your application and provide ongoing support, maintenance, and optimization as your business grows.</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition">
+                    Start Your Project
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why <span class="gradient-text">Choose Us</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">What sets Pentara apart from other development agencies.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 p-8 rounded-xl feature-card transition duration-300 hover:bg-white hover:shadow-lg">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-lg flex items-center justify-center mb-6 feature-icon">
+                        <i class="fas fa-users text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Dedicated Team</h3>
+                    <p class="text-slate-600">Work directly with our tight-knit 4-dev team who will become an extension of your business.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 p-8 rounded-xl feature-card transition duration-300 hover:bg-white hover:shadow-lg">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6 feature-icon">
+                        <i class="fas fa-bolt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fast Execution</h3>
+                    <p class="text-slate-600">Our streamlined processes and senior developers deliver results faster than larger agencies.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 p-8 rounded-xl feature-card transition duration-300 hover:bg-white hover:shadow-lg">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 feature-icon">
+                        <i class="fas fa-lock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Security Focus</h3>
+                    <p class="text-slate-600">We build with security in mind from day one, protecting your data and your users.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-slate-50 p-8 rounded-xl feature-card transition duration-300 hover:bg-white hover:shadow-lg">
+                    <div class="w-14 h-14 bg-purple-50 rounded-lg flex items-center justify-center mb-6 feature-icon">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Results-Driven</h3>
+                    <p class="text-slate-600">We measure success by the business impact of our work, not just technical delivery.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gradient-to-r from-emerald-500 to-indigo-600 rounded-xl p-8 md:p-12 text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4">Ready to build something amazing?</h3>
+                        <p class="text-emerald-100 mb-6">Let's discuss how we can help you achieve your business goals with custom software solutions.</p>
+                        <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-emerald-600 bg-white hover:bg-slate-100 transition">
+                            Get in Touch
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="bg-white/20 p-4 rounded-full animate-float">
+                            <i class="fas fa-rocket text-5xl md:text-7xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent <span class="gradient-text">Pricing</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Choose the engagement model that works best for your project and budget.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Fixed Price</h3>
+                        <p class="text-slate-600 mb-6">Perfect for well-defined projects with clear requirements.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-slate-900">$5,000+</span>
+                            <span class="text-slate-600">/project</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Fixed timeline & budget</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Detailed project scope</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Milestone-based payments</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Quality assurance included</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 px-6 py-3 rounded-md font-medium transition">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Plan 2 (Featured) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-emerald-500 transform scale-105 z-10">
+                    <div class="bg-emerald-500 text-white text-center py-2">
+                        <p class="text-sm font-medium">MOST POPULAR</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Dedicated Team</h3>
+                        <p class="text-slate-600 mb-6">Ideal for ongoing projects with evolving requirements.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-slate-900">$4,500+</span>
+                            <span class="text-slate-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Full-time developers</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Flexible scope</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Weekly sprints</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Priority support</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition">
+                            Choose Plan
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Hourly Rate</h3>
+                        <p class="text-slate-600 mb-6">Great for small tasks or when you need occasional support.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-slate-900">$75+</span>
+                            <span class="text-slate-600">/hour</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Pay only for time used</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Flexible engagement</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>No long-term commitment</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                                <span>Detailed time tracking</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 px-6 py-3 rounded-md font-medium transition">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold text-center mb-6">Not sure which plan is right for you?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-medium text-slate-900 mb-3">Schedule a free consultation</h4>
+                        <p class="text-slate-600 mb-4">Book a 30-minute call with our team to discuss your project needs.</p>
+                        <a href="#" class="inline-flex items-center text-emerald-600 font-medium hover:text-emerald-800 transition">
+                            Book a call
+                            <i class="fas fa-calendar-alt ml-2"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-slate-900 mb-3">Get a custom quote</h4>
+                        <p class="text-slate-600 mb-4">Tell us about your project and we'll prepare a tailored proposal.</p>
+                        <a href="#contact" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition">
+                            Request a quote
+                            <i class="fas fa-envelope ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our <span class="gradient-text">Clients Say</span></h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Don't just take our word for it - hear from businesses we've helped transform.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-slate-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-slate-900">Sarah Johnson</h4>
+                            <p class="text-slate-600">CEO, EduTech Solutions</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex">
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 italic">
+                        "Pentara transformed our LMS platform, increasing user engagement by 65%. Their team was professional, responsive, and delivered beyond our expectations. We've already signed them up for phase two!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-slate-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-slate-900">Michael Chen</h4>
+                            <p class="text-slate-600">CTO, ShopNest</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex">
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1
