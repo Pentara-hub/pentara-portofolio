@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Portfolio = () => {
   return (
     <>
@@ -38,12 +40,12 @@ const Portfolio = () => {
                     AWS
                   </span>
                 </div>
-                <a
-                  href="#"
+                <Link
+                  to="/case-study/eduplatform-pro"
                   className="text-primary hover:text-blue-800 font-medium text-sm inline-flex items-center"
                 >
                   View case study <i className="fas fa-arrow-right ml-1" />
-                </a>
+                </Link>
               </div>
             </div>
             {/* Project 2 */}
@@ -67,12 +69,12 @@ const Portfolio = () => {
                     MongoDB
                   </span>
                 </div>
-                <a
-                  href="#"
+                <Link
+                  to="/case-study/shopswift"
                   className="text-primary hover:text-blue-800 font-medium text-sm inline-flex items-center"
                 >
                   View case study <i className="fas fa-arrow-right ml-1" />
-                </a>
+                </Link>
               </div>
             </div>
             {/* Project 3 */}

@@ -6,7 +6,7 @@ const Header = () => {
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0 flex items-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center rounded">
-                <img src="assets/images/logo.png" alt="Profile" />
+                <img src="/assets/images/logo.png" alt="Profile" />
                 <span className="text-xl font-semibold ml-2 mt-1">Pentara</span>
               </div>
             </div>
