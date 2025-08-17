@@ -120,22 +120,22 @@
   <body
     class="bg-background-light dark:bg-background-dark font-sans text-slate-800 dark:text-slate-200 transition-colors duration-300"
   >
+    <div id="root"></div>
     <!-- Navigation -->
-    <nav
+    <!-- <nav
       class="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-md z-40 shadow-sm"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
-          <div class="flex items-center">
-            <div class="flex-shrink-0 flex items-center">
-              <div
-                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold"
-              >
-                P
-              </div>
-              <span class="ml-3 text-xl font-semibold">Pentara</span>
+          <div class="flex-shrink-0 flex items-center">
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center rounded"
+            >
+              <img src="assets/images/logo.png" alt="Profile" />
+              <span class="text-xl font-semibold ml-2 mt-1">Pentara</span>
             </div>
           </div>
+
           <div class="hidden md:block">
             <div class="ml-10 flex items-center space-x-4">
               <a
@@ -193,8 +193,8 @@
         </div>
       </div>
 
-      <!-- Mobile menu -->
-      <div
+       Mobile menu -->
+    <!-- <div
         id="mobileMenu"
         class="hidden md:hidden bg-white dark:bg-dark shadow-lg"
       >
@@ -246,7 +246,7 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav>  -->
 
     <!-- Hero Section -->
     <section
@@ -1043,9 +1043,10 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6">
               Why Choose Pentara
             </h2>
-            <p class="text-lg text-slate-600 dark:text-slate-300 mb-6">
-              We're a senior full-stack team of 4 developers with expertise in
-              cloud-native deployments, performance optimization, and security.
+            <p class="text-md text-slate-600 dark:text-slate-300 mb-8">
+              Pentara is a senior full-stack team delivering scalable,
+              cloud-native solutions with top-tier performance, security, and
+              seamless deployments.
             </p>
             <div class="space-y-6">
               <div class="flex items-start">
@@ -1099,100 +1100,73 @@
             </div>
           </div>
           <div class="lg:w-1/2 fade-in-delay-1">
-            <div
-              class="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden"
-            >
-              <div class="p-6">
-                <h3 class="text-xl font-semibold mb-4">Our Capabilities</h3>
-                <div class="space-y-4">
-                  <!-- Capability 1 -->
-                  <div>
-                    <div class="flex justify-between mb-1">
-                      <span class="text-sm font-medium"
-                        >Frontend Development</span
-                      >
-                      <span class="text-sm font-medium">95%</span>
-                    </div>
-                    <div
-                      class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2"
-                    >
-                      <div
-                        class="bg-primary h-2 rounded-full"
-                        style="width: 95%"
-                      ></div>
-                    </div>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
+              <!-- Section Title -->
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                Why Partner With Us
+              </h3>
+
+              <!-- Value Points -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Point 1 -->
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-rocket text-lg"></i>
                   </div>
-                  <!-- Capability 2 -->
                   <div>
-                    <div class="flex justify-between mb-1">
-                      <span class="text-sm font-medium"
-                        >Backend Development</span
-                      >
-                      <span class="text-sm font-medium">90%</span>
-                    </div>
-                    <div
-                      class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2"
-                    >
-                      <div
-                        class="bg-primary h-2 rounded-full"
-                        style="width: 90%"
-                      ></div>
-                    </div>
-                  </div>
-                  <!-- Capability 3 -->
-                  <div>
-                    <div class="flex justify-between mb-1">
-                      <span class="text-sm font-medium"
-                        >Cloud Infrastructure</span
-                      >
-                      <span class="text-sm font-medium">85%</span>
-                    </div>
-                    <div
-                      class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2"
-                    >
-                      <div
-                        class="bg-primary h-2 rounded-full"
-                        style="width: 85%"
-                      ></div>
-                    </div>
-                  </div>
-                  <!-- Capability 4 -->
-                  <div>
-                    <div class="flex justify-between mb-1">
-                      <span class="text-sm font-medium">UI/UX Design</span>
-                      <span class="text-sm font-medium">80%</span>
-                    </div>
-                    <div
-                      class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2"
-                    >
-                      <div
-                        class="bg-primary h-2 rounded-full"
-                        style="width: 80%"
-                      ></div>
-                    </div>
+                    <h4 class="font-semibold text-lg">Rapid Delivery</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Get your project launched in weeks, not months.
+                    </p>
                   </div>
                 </div>
-              </div>
-              <div class="bg-blue-50 dark:bg-slate-700 p-6">
-                <h3 class="text-lg font-semibold mb-3">Key Benefits</h3>
-                <ul class="space-y-3">
-                  <li class="flex items-start">
-                    <i class="fas fa-check text-accent mt-1 mr-2"></i>
-                    <span>Launch in weeks, not months</span>
-                  </li>
-                  <li class="flex items-start">
-                    <i class="fas fa-check text-accent mt-1 mr-2"></i>
-                    <span>99.9% uptime-ready infrastructure</span>
-                  </li>
-                  <li class="flex items-start">
-                    <i class="fas fa-check text-accent mt-1 mr-2"></i>
-                    <span>CI/CD pipelines from day one</span>
-                  </li>
-                  <li class="flex items-start">
-                    <i class="fas fa-check text-accent mt-1 mr-2"></i>
-                    <span>Clear timelines and milestones</span>
-                  </li>
-                </ul>
+
+                <!-- Point 2 -->
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-shield-alt text-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Enterprise Security</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Built with best-in-class security and compliance in mind.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-server text-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Cloud Excellence</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Scalable, reliable, and uptime-ready infrastructure.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-tasks text-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Clear Process</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Transparent timelines, milestones, and progress updates.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1224,7 +1198,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Abdelrahman.jpg"
+                src="assets/images/Abdelrahman.jpg"
                 alt="Abdelrahman Mohamed"
                 class="w-full h-full object-cover"
               />
@@ -1261,7 +1235,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Ahmed.jpg"
+                src="assets/images/Ahmed.jpg"
                 alt="Ahmed Medhat"
                 class="w-full h-full object-cover"
               />
@@ -1299,7 +1273,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Samni.jpg"
+                src="assets/images/Samni.jpg"
                 alt="Omar Elsamni"
                 class="w-full h-full object-cover"
               />
@@ -1337,7 +1311,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Osama.jpg"
+                src="assets/images/Osama.jpg"
                 alt="Osama Medhat"
                 class="w-full h-full object-cover"
               />
@@ -1505,7 +1479,12 @@
 
         <div class="flex flex-col lg:flex-row gap-12">
           <div class="lg:w-1/2 fade-in">
-            <form class="space-y-6">
+            <form
+              id="contact-form"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="space-y-6"
+            >
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1515,7 +1494,7 @@
                   >
                   <input
                     type="text"
-                    id="name"
+                    name="name"
                     class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                     placeholder="Your name"
                   />
@@ -1528,7 +1507,7 @@
                   >
                   <input
                     type="email"
-                    id="email"
+                    name="email"
                     class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                     placeholder="your@email.com"
                   />
@@ -1543,6 +1522,7 @@
                 <input
                   type="text"
                   id="company"
+                  name="company"
                   class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                   placeholder="Your company (optional)"
                 />
@@ -1560,12 +1540,33 @@
                   <option value="" disabled selected>
                     Select project type
                   </option>
-                  <option value="web-app">Web Application</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="lms">Learning Management System</option>
-                  <option value="dashboard">Business Dashboard</option>
-                  <option value="other">Other</option>
+                  <option class="bg-slate-800 text-gray-50" value="Web-App">
+                    Web Application
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Ecommerce">
+                    E-commerce
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="LMS">
+                    Learning Management System
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Dashboards">
+                    Business Dashboard
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Other">
+                    Other
+                  </option>
                 </select>
+
+                <!-- Hidden by default; shown only if 'Other' is selected -->
+                <div id="other-type-wrapper" class="mt-3 hidden">
+                  <input
+                    type="text"
+                    id="other-project-type"
+                    name="otherProjectType"
+                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
+                    placeholder="Please specify"
+                  />
+                </div>
               </div>
               <div>
                 <label
@@ -1580,10 +1581,10 @@
                   <option value="" disabled selected>
                     Select budget range
                   </option>
-                  <option value="10-25">$10,000 - $25,000</option>
-                  <option value="25-50">$25,000 - $50,000</option>
-                  <option value="50-100">$50,000 - $100,000</option>
-                  <option value="100+">$100,000+</option>
+                  <option value="$10K-$25K">$10,000 - $25,000</option>
+                  <option value="$25K-$50K">$25,000 - $50,000</option>
+                  <option value="$50K-$100K">$50,000 - $100,000</option>
+                  <option value="$100K+">$100,000+</option>
                   <option value="unsure">Not sure yet</option>
                 </select>
               </div>
@@ -1594,7 +1595,7 @@
                   >Project Details</label
                 >
                 <textarea
-                  id="message"
+                  name="message"
                   rows="4"
                   class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                   placeholder="Tell us about your project..."
@@ -1607,6 +1608,11 @@
                 >
                   Get a proposal
                 </button>
+                <div class="hidden loading text-sm opacity-80">Sending…</div>
+                <div class="hidden error-message text-sm text-red-300"></div>
+                <div class="hidden sent-message text-sm text-emerald-300">
+                  Message sent!
+                </div>
               </div>
             </form>
           </div>
@@ -1673,17 +1679,19 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-12 px-4 sm:px-6 lg:px-8">
+    <!-- <footer class="bg-dark text-white py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-2">
             <div class="flex items-center mb-4">
-              <div
-                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-3"
-              >
-                P
+              <div class="flex-shrink-0 flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center rounded"
+                >
+                  <img src="assets/images/logo.png" alt="Profile" />
+                </div>
               </div>
-              <span class="text-xl font-semibold">Pentara</span>
+              <span class="text-xl font-semibold ml-3 mt-1">Pentara</span>
             </div>
             <p class="text-slate-300 mb-6">
               We design, develop, and deploy full-stack web apps and cloud
@@ -1792,7 +1800,7 @@
           </p>
         </div>
       </div>
-    </footer>
+    </footer> -->
 
     <script>
       // Theme toggle
@@ -1953,5 +1961,7 @@
       window.addEventListener("scroll", checkVisibility);
       window.addEventListener("load", checkVisibility);
     </script>
+    <script src="assets/js/main.js"></script>
+    <script type="module" src="/resources/main.jsx"></script>
   </body>
 </html>
