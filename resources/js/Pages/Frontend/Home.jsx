@@ -1,3 +1,4 @@
+import useRevealOnScroll from "../../../hooks/useRevealOnScroll";
 import MainLayout from "../../Layouts/MainLayout";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
@@ -10,6 +11,7 @@ import Services from "./Components/Services";
 import Testimonials from "./Components/Testimonials";
 
 const Home = () => {
+  useRevealOnScroll();
   return (
     <>
       <Hero />

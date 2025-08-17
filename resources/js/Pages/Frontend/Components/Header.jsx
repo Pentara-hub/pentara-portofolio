@@ -122,17 +122,9 @@ export default function Header() {
               </Link>
             ))}
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-              <button
-                onClick={toggleTheme}
-                className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium"
-              >
-                <span>Toggle Theme</span>
-                {theme === "dark" ? (
-                  <i className="fas fa-sun" />
-                ) : (
-                  <i className="fas fa-moon" />
-                )}
-              </button>
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-700 px-3 pb-4">
+                <Switch />
+              </div>
             </div>
           </div>
         </div>
