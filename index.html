@@ -130,7 +130,7 @@
             <div
               class="w-12 h-12 rounded-full flex items-center justify-center rounded"
             >
-              <img src="images/logo.png" alt="Profile" />
+              <img src="assets/images/logo.png" alt="Profile" />
               <span class="text-xl font-semibold ml-2 mt-1">Pentara</span>
             </div>
           </div>
@@ -1197,7 +1197,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Abdelrahman.jpg"
+                src="assets/images/Abdelrahman.jpg"
                 alt="Abdelrahman Mohamed"
                 class="w-full h-full object-cover"
               />
@@ -1234,7 +1234,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Ahmed.jpg"
+                src="assets/images/Ahmed.jpg"
                 alt="Ahmed Medhat"
                 class="w-full h-full object-cover"
               />
@@ -1272,7 +1272,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Samni.jpg"
+                src="assets/images/Samni.jpg"
                 alt="Omar Elsamni"
                 class="w-full h-full object-cover"
               />
@@ -1310,7 +1310,7 @@
               class="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20"
             >
               <img
-                src="images/Osama.jpg"
+                src="assets/images/Osama.jpg"
                 alt="Osama Medhat"
                 class="w-full h-full object-cover"
               />
@@ -1478,7 +1478,12 @@
 
         <div class="flex flex-col lg:flex-row gap-12">
           <div class="lg:w-1/2 fade-in">
-            <form class="space-y-6">
+            <form
+              id="contact-form"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="space-y-6"
+            >
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1488,7 +1493,7 @@
                   >
                   <input
                     type="text"
-                    id="name"
+                    name="name"
                     class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                     placeholder="Your name"
                   />
@@ -1501,7 +1506,7 @@
                   >
                   <input
                     type="email"
-                    id="email"
+                    name="email"
                     class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                     placeholder="your@email.com"
                   />
@@ -1516,6 +1521,7 @@
                 <input
                   type="text"
                   id="company"
+                  name="company"
                   class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                   placeholder="Your company (optional)"
                 />
@@ -1533,12 +1539,33 @@
                   <option value="" disabled selected>
                     Select project type
                   </option>
-                  <option value="web-app">Web Application</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="lms">Learning Management System</option>
-                  <option value="dashboard">Business Dashboard</option>
-                  <option value="other">Other</option>
+                  <option class="bg-slate-800 text-gray-50" value="Web-App">
+                    Web Application
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Ecommerce">
+                    E-commerce
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="LMS">
+                    Learning Management System
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Dashboards">
+                    Business Dashboard
+                  </option>
+                  <option class="bg-slate-800 text-gray-50" value="Other">
+                    Other
+                  </option>
                 </select>
+
+                <!-- Hidden by default; shown only if 'Other' is selected -->
+                <div id="other-type-wrapper" class="mt-3 hidden">
+                  <input
+                    type="text"
+                    id="other-project-type"
+                    name="otherProjectType"
+                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
+                    placeholder="Please specify"
+                  />
+                </div>
               </div>
               <div>
                 <label
@@ -1553,10 +1580,10 @@
                   <option value="" disabled selected>
                     Select budget range
                   </option>
-                  <option value="10-25">$10,000 - $25,000</option>
-                  <option value="25-50">$25,000 - $50,000</option>
-                  <option value="50-100">$50,000 - $100,000</option>
-                  <option value="100+">$100,000+</option>
+                  <option value="$10K-$25K">$10,000 - $25,000</option>
+                  <option value="$25K-$50K">$25,000 - $50,000</option>
+                  <option value="$50K-$100K">$50,000 - $100,000</option>
+                  <option value="$100K+">$100,000+</option>
                   <option value="unsure">Not sure yet</option>
                 </select>
               </div>
@@ -1567,7 +1594,7 @@
                   >Project Details</label
                 >
                 <textarea
-                  id="message"
+                  name="message"
                   rows="4"
                   class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                   placeholder="Tell us about your project..."
@@ -1580,6 +1607,11 @@
                 >
                   Get a proposal
                 </button>
+                <div class="hidden loading text-sm opacity-80">Sending…</div>
+                <div class="hidden error-message text-sm text-red-300"></div>
+                <div class="hidden sent-message text-sm text-emerald-300">
+                  Message sent!
+                </div>
               </div>
             </form>
           </div>
@@ -1655,7 +1687,7 @@
                 <div
                   class="w-12 h-12 rounded-full flex items-center justify-center rounded"
                 >
-                  <img src="images/logo.png" alt="Profile" />
+                  <img src="assets/images/logo.png" alt="Profile" />
                 </div>
               </div>
               <span class="text-xl font-semibold ml-3 mt-1">Pentara</span>
@@ -1928,5 +1960,6 @@
       window.addEventListener("scroll", checkVisibility);
       window.addEventListener("load", checkVisibility);
     </script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

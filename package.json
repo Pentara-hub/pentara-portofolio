@@ -1,0 +1,18 @@
+{
+  "name": "pentara-portofolio",
+  "version": "1.0.0",
+  "description": "---\r title: pentara-test-portofolio\r emoji: 🐳\r colorFrom: yellow\r colorTo: pink\r sdk: static\r pinned: false\r tags:\r   - deepsite\r ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.5"
+  }
+}

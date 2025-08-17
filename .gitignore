@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# env/secrets
+.env
+
+# build artifacts (add what you use)
+dist/
+build/
+.next/
+out/
+.vercel/
+.netlify/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
