@@ -1,3 +1,7 @@
+// resources/js/Components/Header.jsx
+import React from "react";
+import Switch from "./Switch";
+
 const Header = () => {
   return (
     <>
@@ -5,11 +9,12 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0 flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center rounded">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center">
                 <img src="assets/images/logo.png" alt="Profile" />
                 <span className="text-xl font-semibold ml-2 mt-1">Pentara</span>
               </div>
             </div>
+
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-4">
                 <a
@@ -54,15 +59,14 @@ const Header = () => {
                 >
                   Contact
                 </a>
-                <button
-                  id="themeToggle"
-                  className="ml-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
-                >
-                  <i className="fas fa-moon dark:hidden" />
-                  <i className="fas fa-sun hidden dark:block" />
-                </button>
+
+                {/* Replace old moon/sun button with the component */}
+                <div className="ml-4">
+                  <Switch />
+                </div>
               </div>
             </div>
+
             <div className="md:hidden flex items-center">
               <button
                 id="mobileMenuBtn"
@@ -73,6 +77,8 @@ const Header = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
         <div
           id="mobileMenu"
           className="hidden md:hidden bg-white dark:bg-dark shadow-lg"
@@ -120,15 +126,10 @@ const Header = () => {
             >
               Contact
             </a>
-            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-              <button
-                id="mobileThemeToggle"
-                className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium"
-              >
-                <span className="mr-2">Toggle Theme</span>
-                <i className="fas fa-moon dark:hidden" />
-                <i className="fas fa-sun hidden dark:block" />
-              </button>
+
+            {/* Optional: show switch in mobile dropdown too */}
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700 px-3 pb-4">
+              <Switch />
             </div>
           </div>
         </div>

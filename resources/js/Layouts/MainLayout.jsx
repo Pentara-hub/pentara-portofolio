@@ -4,7 +4,7 @@ import Header from "../Pages/Frontend/Components/Header";
 const MainLayout = () => {
   return (
     <>
-      <Header />
+      <Header/>
       <Footer />
     </>
   );
