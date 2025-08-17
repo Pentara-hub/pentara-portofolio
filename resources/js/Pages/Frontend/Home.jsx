@@ -11,7 +11,7 @@ import Testimonials from "./Components/Testimonials";
 
 const Home = () => {
   return (
-    <MainLayout>
+    <>
       <Hero />
       <Services />
       <Section />
@@ -21,7 +21,7 @@ const Home = () => {
       <OurTeam />
       <Testimonials />
       <Contact />
-    </MainLayout>
+    </>
   );
 };
 
