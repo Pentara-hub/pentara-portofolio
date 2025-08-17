@@ -1,6 +1,6 @@
-// src/Pages/Frontend/Components/Header.jsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import Switch from "./Switch";
 
 const navItems = [
   { label: "Home", hash: "home" },
@@ -42,8 +42,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
-
   return (
     <nav
       className={[
@@ -81,17 +79,7 @@ export default function Header() {
                   {n.label}
                 </Link>
               ))}
-              <button
-                onClick={toggleTheme}
-                className="ml-2 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <i className="fas fa-sun" />
-                ) : (
-                  <i className="fas fa-moon" />
-                )}
-              </button>
+              <Switch />
             </div>
           </div>
 
@@ -121,7 +109,7 @@ export default function Header() {
                 {n.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+            <div className="pt-4 ">
               <div className="pt-4 border-t border-slate-200 dark:border-slate-700 px-3 pb-4">
                 <Switch />
               </div>
