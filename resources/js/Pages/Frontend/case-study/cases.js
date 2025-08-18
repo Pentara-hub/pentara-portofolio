@@ -37,6 +37,11 @@ export const CASES = {
         src: "/assets/images/projects/lms/course-details.png",
         alt: "Course authoring",
       },
+      {
+        type: "img",
+        src: "/assets/images/projects/lms/quiz.jpg",
+        alt: "Course authoring",
+      },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
     ],
     services: [
