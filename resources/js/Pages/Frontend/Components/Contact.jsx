@@ -1,4 +1,47 @@
+import { useState } from "react";
+import { toast } from "react-toastify";
+
 const Contact = () => {
+  const [projectType, setProjectType] = useState("");
+  const [budget, setBudget] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!projectType) {
+      toast.error("Please select a project type.");
+      return;
+    }
+    const formData = {
+      name: e.target.name.value.trim(),
+      email: e.target.email.value.trim(),
+      company: e.target.company.value.trim(),
+      projectType,
+      otherProjectType: e.target.otherProjectType?.value || "",
+      budget: e.target.budget.value,
+      message: e.target.message.value.trim(),
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Message sent!");
+        e.target.reset();
+        setProjectType(""); // reset select
+        setBudget("");
+      } else {
+        toast.error(data.message || "Failed to send.");
+      }
+    } catch (err) {
+      toast.error("⚠️ Something went wrong. Try again later.");
+    }
+  };
+
   return (
     <>
       <section
@@ -20,8 +63,8 @@ const Contact = () => {
               <form
                 id="contact-form"
                 data-aos="fade-up"
-                data-aos-delay={200}
                 className="space-y-6"
+                onSubmit={handleSubmit}
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -75,11 +118,14 @@ const Contact = () => {
                   >
                     Project Type
                   </label>
+
                   <select
                     id="project-type"
+                    value={projectType}
+                    onChange={(e) => setProjectType(e.target.value)}
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all appearance-none"
                   >
-                    <option value disabled selected>
+                    <option value="" disabled>
                       Select project type
                     </option>
                     <option
@@ -108,15 +154,19 @@ const Contact = () => {
                     </option>
                   </select>
                   {/* Hidden by default; shown only if 'Other' is selected */}
-                  <div id="other-type-wrapper" className="mt-3 hidden">
-                    <input
-                      type="text"
-                      id="other-project-type"
-                      name="otherProjectType"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
-                      placeholder="Please specify"
-                    />
-                  </div>
+                  {projectType === "Other" && (
+                    <div className="mt-3">
+                      <input
+                        type="text"
+                        id="other-project-type"
+                        name="otherProjectType"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 
+                 focus:border-white/50 focus:ring-2 focus:ring-white/20 
+                 focus:outline-none transition-all placeholder-white/50"
+                        placeholder="Please specify"
+                      />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label
@@ -127,9 +177,11 @@ const Contact = () => {
                   </label>
                   <select
                     id="budget"
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all appearance-none"
                   >
-                    <option value disabled selected>
+                    <option value="" disabled>
                       Select budget range
                     </option>
                     <option value="$10K-$25K">$10,000 - $25,000</option>

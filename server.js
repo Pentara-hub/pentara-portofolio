@@ -22,11 +22,35 @@ app.post("/contact", async (req, res) => {
     projectType = "",
     otherProjectType = "",
   } = req.body || {};
-  if (!name || !email || !message || !budget)
+
+  // validation
+  if (!name.trim()) {
     return res.status(400).json({
       success: false,
-      message: "Name, email, budget, and project details are required.",
+      message: "Full name is required.",
     });
+  }
+
+  if (!email.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: "A valid email address is required.",
+    });
+  }
+
+  if (!budget.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: "Please select your budget range.",
+    });
+  }
+
+  if (!message.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: "Please include project details in your message.",
+    });
+  }
 
   if (projectType === "Other" && !otherProjectType) {
     return res.status(400).json({
