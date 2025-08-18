@@ -1,27 +1,52 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Select from "react-select";
 
 const Contact = () => {
   const [projectType, setProjectType] = useState("");
   const [budget, setBudget] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const projectTypes = [
+    { value: "Web-App", label: "Web Application" },
+    { value: "Ecommerce", label: "E-commerce" },
+    { value: "LMS", label: "Learning Management System" },
+    { value: "Dashboards", label: "Business Dashboard" },
+    { value: "Other", label: "Other" },
+  ];
+
+  const budgets = [
+    { value: "$10K-$25K", label: "$10,000 - $25,000" },
+    { value: "$25K-$50K", label: "$25,000 - $50,000" },
+    { value: "$50K-$100K", label: "$50,000 - $100,000" },
+    { value: "$100K+", label: "$100,000+" },
+    { value: "unsure", label: "Not sure yet" },
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!projectType) {
       toast.error("Please select a project type.");
       return;
     }
+    if (!budget) {
+      toast.error("Please select a budget range.");
+      return;
+    }
+
     const formData = {
       name: e.target.name.value.trim(),
       email: e.target.email.value.trim(),
       company: e.target.company.value.trim(),
       projectType,
       otherProjectType: e.target.otherProjectType?.value || "",
-      budget: e.target.budget.value,
+      budget,
       message: e.target.message.value.trim(),
     };
 
     try {
+      setLoading(true);
       const res = await fetch("http://localhost:3000/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,13 +57,15 @@ const Contact = () => {
       if (data.success) {
         toast.success("Message sent!");
         e.target.reset();
-        setProjectType(""); // reset select
+        setProjectType("");
         setBudget("");
       } else {
         toast.error(data.message || "Failed to send.");
       }
-    } catch (err) {
+    } catch {
       toast.error("⚠️ Something went wrong. Try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,42 +145,49 @@ const Contact = () => {
                   >
                     Project Type
                   </label>
-
-                  <select
-                    id="project-type"
-                    value={projectType}
-                    onChange={(e) => setProjectType(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all appearance-none"
-                  >
-                    <option value="" disabled>
-                      Select project type
-                    </option>
-                    <option
-                      className="bg-slate-800 text-gray-50"
-                      value="Web-App"
-                    >
-                      Web Application
-                    </option>
-                    <option
-                      className="bg-slate-800 text-gray-50"
-                      value="Ecommerce"
-                    >
-                      E-commerce
-                    </option>
-                    <option className="bg-slate-800 text-gray-50" value="LMS">
-                      Learning Management System
-                    </option>
-                    <option
-                      className="bg-slate-800 text-gray-50"
-                      value="Dashboards"
-                    >
-                      Business Dashboard
-                    </option>
-                    <option className="bg-slate-800 text-gray-50" value="Other">
-                      Other
-                    </option>
-                  </select>
-                  {/* Hidden by default; shown only if 'Other' is selected */}
+                  <Select
+                    options={projectTypes}
+                    value={
+                      projectTypes.find((p) => p.value === projectType) || null
+                    }
+                    onChange={(option) => setProjectType(option?.value ?? null)}
+                    placeholder="Select project type"
+                    isSearchable={false}
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        border: "1px solid rgba(255, 255, 255, 0.2)",
+                        borderRadius: "0.5rem",
+                        padding: "6px 4px",
+                        color: "white",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        backgroundColor: "rgba(15, 23, 42, 0.95)",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        borderRadius: "0.5rem",
+                        marginTop: "4px",
+                      }),
+                      option: (base, state) => ({
+                        ...base,
+                        backgroundColor: state.isFocused
+                          ? "rgba(255,255,255,0.15)"
+                          : "transparent",
+                        color: "white",
+                        cursor: "pointer",
+                        padding: "10px 12px",
+                      }),
+                      singleValue: (base) => ({
+                        ...base,
+                        color: "white",
+                      }),
+                      placeholder: (base) => ({
+                        ...base,
+                        color: "rgba(255,255,255,0.6)",
+                      }),
+                    }}
+                  />
                   {projectType === "Other" && (
                     <div className="mt-3">
                       <input
@@ -161,8 +195,8 @@ const Contact = () => {
                         id="other-project-type"
                         name="otherProjectType"
                         className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 
-                 focus:border-white/50 focus:ring-2 focus:ring-white/20 
-                 focus:outline-none transition-all placeholder-white/50"
+        focus:border-white/50 focus:ring-2 focus:ring-white/20 
+        focus:outline-none transition-all placeholder-white/50"
                         placeholder="Please specify"
                       />
                     </div>
@@ -175,21 +209,49 @@ const Contact = () => {
                   >
                     Budget Range
                   </label>
-                  <select
-                    id="budget"
-                    value={budget}
-                    onChange={(e) => setBudget(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all appearance-none"
-                  >
-                    <option value="" disabled>
-                      Select budget range
-                    </option>
-                    <option value="$10K-$25K">$10,000 - $25,000</option>
-                    <option value="$25K-$50K">$25,000 - $50,000</option>
-                    <option value="$50K-$100K">$50,000 - $100,000</option>
-                    <option value="$100K+">$100,000+</option>
-                    <option value="unsure">Not sure yet</option>
-                  </select>
+
+                  <Select
+                    options={budgets}
+                    value={budget ? { value: budget, label: budget } : null}
+                    onChange={(options) => setBudget(options.value)}
+                    isSearchable={false}
+                    placeholder="Select budget range"
+                    className="text-white"
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        border: "1px solid rgba(255, 255, 255, 0.2)",
+                        borderRadius: "0.5rem",
+                        padding: "6px 4px",
+                        color: "white",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        backgroundColor: "rgba(15, 23, 42, 0.95)",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        borderRadius: "0.5rem",
+                        marginTop: "4px",
+                      }),
+                      option: (base, state) => ({
+                        ...base,
+                        backgroundColor: state.isFocused
+                          ? "rgba(255,255,255,0.15)"
+                          : "transparent",
+                        color: "white",
+                        cursor: "pointer",
+                        padding: "10px 12px",
+                      }),
+                      singleValue: (base) => ({
+                        ...base,
+                        color: "white",
+                      }),
+                      placeholder: (base) => ({
+                        ...base,
+                        color: "rgba(255,255,255,0.6)",
+                      }),
+                    }}
+                  />
                 </div>
                 <div>
                   <label
@@ -209,17 +271,37 @@ const Contact = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-white text-primary hover:bg-opacity-90 font-medium py-3 px-6 rounded-lg transition-all shadow-lg"
+                    disabled={loading}
+                    className={`w-full font-medium py-3 px-6 rounded-lg transition-all shadow-lg flex items-center justify-center gap-2 ${
+                      loading
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-white text-primary hover:bg-opacity-90"
+                    }`}
                   >
-                    Get a proposal
+                    {loading && (
+                      <svg
+                        className="animate-spin h-5 w-5 text-primary"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="6"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        ></path>
+                      </svg>
+                    )}
+                    {loading ? "Sending..." : "Get a proposal"}
                   </button>
-                  <div className="hidden loading text-sm opacity-80">
-                    Sending…
-                  </div>
-                  <div className="hidden error-message text-sm text-red-300" />
-                  <div className="hidden sent-message text-sm text-emerald-300">
-                    Message sent!
-                  </div>
                 </div>
               </form>
             </div>
