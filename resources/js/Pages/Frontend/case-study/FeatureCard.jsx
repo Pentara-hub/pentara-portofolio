@@ -35,7 +35,7 @@ function FeatureCard({ text }) {
   const Icon = featureIconFor(text);
   return (
     <div className="group p-4 rounded-xl border bg-white/70 dark:bg-slate-900/40 dark:border-slate-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_35px_-16px_rgba(0,0,0,0.35)]">
-      <div className="flex items-start gap-3">
+      <div className="flex items-center gap-3">
         <div className="shrink-0 w-10 h-10 grid place-items-center rounded-lg bg-gradient-to-br from-primary/10 to-sky-300/10 text-primary">
           <Icon size={18} />
         </div>
