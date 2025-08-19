@@ -18,10 +18,10 @@ const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* EduPlatform Pro */}
+          {/* EduKids */}
           <Link
             to="/case-study/edukids"
-            aria-label="Open case study: EduPlatform Pro"
+            aria-label="Open case study: EduKids"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -38,7 +38,7 @@ const Portfolio = () => {
             </div>
             <div className="p-6 bg-white dark:bg-transparent">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                EduPlatform Pro
+                EduKids
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
                 A comprehensive learning management system for professional

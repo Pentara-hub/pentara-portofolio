@@ -1,53 +1,12 @@
-export const DEFAULT_SLUG = "eduplatform-pro";
+export const DEFAULT_SLUG = "EduKids";
 
 export const CASES = {
-  "eduplatform-pro": {
-    title: "EduPlatform Pro",
-    subtitle:
-      "A scalable LMS with rich authoring, real-time analytics, and enterprise SSO.",
-    overview:
-      "Client needed a modern learning platform to replace a legacy monolith. We migrated content, built a frictionless enrollment flow, and delivered real-time progress analytics with fine-grained roles.",
-    goals: [
-      "Handle 50k monthly active learners",
-      "Zero-downtime content deploys",
-      "SSO with Okta & audit logging",
-      "Mobile-first learner experience",
-    ],
-    features: [
-      "Course builder with drag-and-drop",
-      "Granular roles (Admin, Instructor, Learner)",
-      "Quizzes & proctoring hooks",
-      "Progress analytics & cohorts",
-      "Multi-tenant theming",
-    ],
-    gallery: [
-      {
-        type: "img",
-        src: "/assets/images/projects/lms/home.png",
-        alt: "Learner dashboard",
-      },
-      {
-        type: "img",
-        src: "/assets/images/projects/lms/course-details.png",
-        alt: "Course authoring",
-      },
-      {
-        type: "img",
-        src: "/assets/images/projects/lms/quiz.jpg",
-        alt: "Course authoring",
-      },
-      // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
-    ],
-    related: ["shopswift", "datainsight", "newshub"],
-  },
-
   edukids: {
     title: "EduKids",
-    subtitle: "A playful, powerful LMS with smart quizzes for K–12 learning",
+    subtitle: "A powerful LMS with smart quizzes learning",
     overview:
       "EduKids is a kid-friendly Learning Management System that blends engaging lessons with a robust quiz engine. Designed for schools, tutors, and edtech startups, EduKids supports multimedia courses, adaptive assessments, and real-time progress tracking—wrapped in a clean, accessible interface that works beautifully on web and mobile. Under the hood, it’s ready for scale and multilingual classrooms, making it easy to launch, manage, and continuously improve learning experiences.",
     goals: [
-      "Boost engagement with interactive, gamified learning",
       "Measure understanding via smart quizzes and analytics",
       "Reduce teacher workload with authoring, auto-grading, and feedback",
       "Support diverse, multilingual classrooms with parental visibility",
@@ -76,7 +35,12 @@ export const CASES = {
       },
       {
         type: "img",
-        src: "/assets/images/projects/lms/quiz.jpg",
+        src: "/assets/images/projects/lms/quiz.png",
+        alt: "Course authoring",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/lms/quiz-ans.png",
         alt: "Course authoring",
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
@@ -107,7 +71,7 @@ export const CASES = {
       { type: "img", src: "images/case-shop-home.jpg", alt: "Home" },
       { type: "img", src: "images/case-shop-pdp.jpg", alt: "PDP" },
     ],
-    related: ["eduplatform-pro", "newshub", "soundwave"],
+    related: ["EduKids", "newshub", "soundwave"],
   },
 
   datainsight: {
@@ -153,7 +117,7 @@ export const CASES = {
       { type: "img", src: "images/case-sound-1.jpg", alt: "Player" },
       { type: "img", src: "images/case-sound-2.jpg", alt: "Feed" },
     ],
-    related: ["newshub", "datainsight", "eduplatform-pro"],
+    related: ["newshub", "datainsight", "EduKids"],
   },
 
   schedulepro: {
@@ -166,6 +130,6 @@ export const CASES = {
       { type: "img", src: "images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["datainsight", "shopswift", "eduplatform-pro"],
+    related: ["datainsight", "shopswift", "EduKids"],
   },
 };

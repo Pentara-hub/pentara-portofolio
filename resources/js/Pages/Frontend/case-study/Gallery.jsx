@@ -27,7 +27,7 @@ import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 function Gallery({
   items = [],
   interval = 5000,
-  objectFit = "cover", // "cover" | "contain"
+  objectFit = "contain", // "cover" | "contain"
   showDots = true,
   allowFullscreen = true,
 }) {
@@ -63,30 +63,37 @@ function Gallery({
   const renderMedia = (it, isActive) => {
     const fitClass =
       objectFit === "contain" ? "object-contain" : "object-cover";
-    const base =
-      "absolute inset-0 w-full h-full transition-opacity duration-500 ease-out will-change-opacity";
-    return it?.type === "video" ? (
-      <iframe
-        key={`v-${it.src}`}
-        className={`${base} ${
-          isActive ? "opacity-100" : "opacity-0"
-        } rounded-2xl`}
-        src={it.src}
-        title={it.title || "Video"}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        loading="lazy"
-      />
-    ) : (
+
+    // NOTE: no absolute positioning, no forced height — images are intrinsic.
+    if (it?.type === "video") {
+      return (
+        <div className="w-full">
+          <iframe
+            key={`v-${it.src}`}
+            className={`w-full aspect-video transition-opacity duration-500 ease-out ${
+              isActive ? "opacity-100" : "opacity-0"
+            } rounded-2xl`}
+            src={it.src}
+            title={it.title || "Video"}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      );
+    }
+
+    // Image
+    return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
         key={`i-${it.src}`}
         src={it.src}
         alt={it.alt || ""}
-        className={`${base} ${fitClass} ${
+        className={`block mx-auto max-w-full h-auto ${fitClass} transition-opacity duration-500 ease-out ${
           isActive ? "opacity-100" : "opacity-0"
-        } select-none`}
+        } select-none rounded-2xl`}
         loading={isActive ? "eager" : "lazy"}
         fetchpriority={isActive ? "high" : "low"}
         draggable={false}
@@ -96,7 +103,7 @@ function Gallery({
 
   if (!count) {
     return (
-      <div className="aspect-[16/9] w-full bg-slate-100 dark:bg-slate-800 grid place-items-center rounded-2xl">
+      <div className="w-full grid place-items-center rounded-2xl">
         <span className="text-sm opacity-70">No media yet.</span>
       </div>
     );
@@ -104,9 +111,9 @@ function Gallery({
 
   return (
     <div ref={containerRef} className="w-full">
-      {/* Wrapper keeps your original style */}
+      {/* Wrapper: transparent background, no fills */}
       <div
-        className="group relative rounded-2xl overflow-hidden border border-slate-200/60 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 shadow-[0_8px_28px_-12px_rgba(2,6,23,0.25)]"
+        className="group relative rounded-2xl overflow-hidden border border-slate-200/60 dark:border-slate-700 bg-transparent"
         onMouseEnter={() => {
           setUiHover(true);
           if (hasHover) mainRef.current?.autoplay?.stop();
@@ -122,25 +129,18 @@ function Gallery({
         aria-label="Gallery"
         role="region"
       >
-        {/* UI legibility band */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 
-             bg-gradient-to-t from-black/25 via-black/10 to-transparent z-10"
-        />
-
         {/* Slide counter chip */}
         <div className="absolute left-3 top-3 z-20 px-2 py-1 rounded-md text-[11px] font-medium bg-black/55 text-white/95">
           {current + 1} / {count}
         </div>
 
-        {/* Controls (custom, not Swiper default buttons) */}
+        {/* Controls (custom) */}
         <button
           onClick={() => mainRef.current?.slidePrev()}
           className={`absolute left-3 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full
-              bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
-              backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
-              ${showArrows ? "opacity-100" : "opacity-0"}`}
+                bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
+                backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
+                ${showArrows ? "opacity-100" : "opacity-0"}`}
           aria-label="Previous"
         >
           <ChevronLeft size={18} />
@@ -149,9 +149,9 @@ function Gallery({
         <button
           onClick={() => mainRef.current?.slideNext()}
           className={`absolute right-3 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full
-              bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
-              backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
-              ${showArrows ? "opacity-100" : "opacity-0"}`}
+                bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
+                backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
+                ${showArrows ? "opacity-100" : "opacity-0"}`}
           aria-label="Next"
         >
           <ChevronRight size={18} />
@@ -168,11 +168,8 @@ function Gallery({
           </button>
         )}
 
-        {/* Stage (cross-fade stack look, but actually driven by Swiper) */}
-        <div className="aspect-[16/9] w-full bg-slate-100 dark:bg-slate-800 relative">
-          {/* subtle edge vignette */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/[0.02] to-transparent z-0" />
-
+        {/* Stage: transparent, NO fixed aspect ratio */}
+        <div className="w-full relative">
           <Swiper
             modules={[
               Navigation,
@@ -189,13 +186,13 @@ function Gallery({
             onSlideChange={(swiper) =>
               setCurrent(swiper.realIndex ?? swiper.activeIndex)
             }
-            className="absolute inset-0 w-full h-full"
-            // Visual behavior
-            loop={items.length > 1}
+            className="w-full"
+            // Key changes:
+            autoHeight={true} // <-- resize to active slide content
             effect="fade"
             fadeEffect={{ crossFade: true }}
+            loop={items.length > 1}
             keyboard={{ enabled: true }}
-            // Autoplay that NEVER pauses
             autoplay={{
               delay: interval,
               disableOnInteraction: true,
@@ -203,13 +200,12 @@ function Gallery({
               stopOnLastSlide: false,
               waitForTransition: true,
             }}
-            // Hook to thumbs
             thumbs={{ swiper: thumbs && !thumbs.destroyed ? thumbs : null }}
           >
             {items.map((it, i) => (
               <SwiperSlide key={`s-${i}`}>
-                <div className="absolute inset-0">
-                  {/* render both current/prev/next look via simple render; fade handles it */}
+                {/* Center content; no background; height comes from content */}
+                <div className="w-full flex items-center justify-center">
                   {renderMedia(it, true)}
                 </div>
               </SwiperSlide>
@@ -233,9 +229,9 @@ function Gallery({
                 aria-label={`Go to slide ${i + 1}`}
                 onClick={() => mainRef.current?.slideToLoop(i)}
                 className={`relative h-2 rounded-full 
-                    transition-[width,opacity,transform] duration-300 
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80
-                    ${i === current ? "w-6" : "w-2"}`}
+                      transition-[width,opacity,transform] duration-300 
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80
+                      ${i === current ? "w-6" : "w-2"}`}
                 style={{
                   background: "#fff",
                   mixBlendMode: "difference",
@@ -249,7 +245,7 @@ function Gallery({
         )}
       </div>
 
-      {/* Thumbs (same look, backed by Swiper thumbs) */}
+      {/* Thumbs */}
       <Swiper
         onSwiper={setThumbs}
         modules={[FreeMode, Thumbs]}
@@ -265,16 +261,16 @@ function Gallery({
               ref={(el) => (thumbsBtnRefs.current[idx] = el)}
               onClick={() => mainRef.current?.slideToLoop(idx)}
               className={`relative w-28 h-16 rounded-xl overflow-hidden border transition 
-                ${
-                  idx === current
-                    ? "ring-2 ring-primary opacity-100 border-slate-300 dark:border-slate-600"
-                    : "opacity-80 hover:opacity-100 border-slate-200/70 dark:border-slate-700"
-                }`}
+                  ${
+                    idx === current
+                      ? "ring-2 ring-primary opacity-100 border-slate-300 dark:border-slate-600"
+                      : "opacity-80 hover:opacity-100 border-slate-200/70 dark:border-slate-700"
+                  }`}
               aria-label={`Thumbnail ${idx + 1}`}
               title={it.title || it.caption || `Media ${idx + 1}`}
             >
               {it.type === "video" ? (
-                <div className="w-full h-full bg-slate-200 dark:bg-slate-700 grid place-items-center">
+                <div className="w-full h-full grid place-items-center">
                   <span className="inline-grid place-items-center w-8 h-8 rounded-full bg-black/60 text-white">
                     <Play size={14} />
                   </span>
@@ -301,7 +297,7 @@ function Gallery({
         .thumbs { scrollbar-width: thin; scrollbar-color: rgba(148,163,184,0.45) transparent; }
       `}</style>
 
-      {/* Fullscreen Lightbox (uses current slide) */}
+      {/* Fullscreen Lightbox */}
       {allowFullscreen && isFs && (
         <div
           className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-sm"
@@ -328,10 +324,10 @@ function Gallery({
                 <ChevronRight />
               </button>
 
-              <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-black/30">
+              <div className="relative w-full">
                 {item?.type === "video" ? (
                   <iframe
-                    className="absolute inset-0 w-full h-full"
+                    className="w-full aspect-video rounded-lg"
                     src={item.src}
                     title={item.title || "Video"}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -344,7 +340,7 @@ function Gallery({
                   <img
                     src={item?.src}
                     alt={item?.alt || ""}
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="block mx-auto max-w-full h-auto object-contain rounded-lg"
                     draggable={false}
                   />
                 )}
