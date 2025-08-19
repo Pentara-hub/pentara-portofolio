@@ -1,7 +1,5 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
-import Chip from "./Chip";
 import FeatureCard from "./FeatureCard";
 import Gallery from "./Gallery";
 import RelatedCard from "./RelatedCard";
@@ -63,19 +61,11 @@ export default function CaseStudyPage() {
                 </ul>
               </section>
 
-              <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.25)]">
-                <h2 className="text-2xl font-bold mb-3">Solution</h2>
-                <div
-                  className="prose prose-invert max-w-none text-slate-700 dark:text-slate-300"
-                  dangerouslySetInnerHTML={{ __html: cs.solutionHtml || "" }}
-                />
-              </section>
-
               <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 mt-12 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.25)]">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-2xl font-bold">Features</h2>
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
                   {(cs.features || []).length ? (
                     cs.features.map((f) => <FeatureCard key={f} text={f} />)
                   ) : (
@@ -88,27 +78,6 @@ export default function CaseStudyPage() {
             </article>
 
             <aside className="lg:col-span-4 space-y-6">
-              <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.25)]">
-                <h3 className="text-lg font-semibold mb-3">Services</h3>
-                <ul className="space-y-2">
-                  {(cs.services || []).map((s, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Check className="text-sky-400 mt-1" size={16} />
-                      <span>{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.25)]">
-                <h3 className="text-lg font-semibold mb-3">Tech stack</h3>
-                <div className="flex flex-wrap gap-2">
-                  {(cs.stack || []).map((s) => (
-                    <Chip key={s}>{s}</Chip>
-                  ))}
-                </div>
-              </section>
-
               <section className="bg-gradient-to-r from-[#0B1021] to-primary text-white rounded-2xl p-6">
                 <h3 className="text-xl font-semibold">
                   Have a similar project?
@@ -127,7 +96,7 @@ export default function CaseStudyPage() {
           </div>
 
           <section className="mt-16">
-            <h2 className="text-2xl font-bold mb-4">Related projects</h2>
+            <h2 className="text-2xl font-bold mb-4">Other projects</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {(cs.related || []).map((sl) => (
                 <RelatedCard key={sl} slug={sl} />
