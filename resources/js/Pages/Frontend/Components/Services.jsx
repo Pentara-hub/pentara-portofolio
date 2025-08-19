@@ -1,3 +1,9 @@
+// Services.jsx
+const tagClass =
+  "text-xs px-2 py-1 rounded transition-colors duration-200 " +
+  "bg-blue-100 text-blue-700 " + // light mode
+  "dark:bg-[#1E3A8A] dark:text-[#a1bde8]"; // dark mode custom
+
 const Services = () => {
   return (
     <>
@@ -14,8 +20,9 @@ const Services = () => {
               Comprehensive solutions tailored to your business needs.
             </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service 1 */}
+            {/* Service 1 - Web Development */}
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in">
               <div className="w-14 h-14 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
                 <i className="fas fa-code text-primary text-2xl" />
@@ -26,30 +33,17 @@ const Services = () => {
                 technologies.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  React
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Laravel
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Inertia
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Tailwind
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Next.js
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  MySQL / PostgreSQL
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  REST &amp; GraphQL APIs
-                </span>
+                <span className={tagClass}>React</span>
+                <span className={tagClass}>Laravel</span>
+                <span className={tagClass}>Inertia</span>
+                <span className={tagClass}>Tailwind</span>
+                <span className={tagClass}>Next.js</span>
+                <span className={tagClass}>MySQL / PostgreSQL</span>
+                <span className={tagClass}>REST &amp; GraphQL APIs</span>
               </div>
             </div>
-            {/* Service 2 */}
+
+            {/* Service 2 - Cloud & DevOps */}
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in-delay-1">
               <div className="w-14 h-14 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
                 <i className="fas fa-cloud text-primary text-2xl" />
@@ -60,65 +54,86 @@ const Services = () => {
                 reliability.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  AWS
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  GCP
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Digital Ocean
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Hetzner
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  CI/CD
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Terraform
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Docker
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Jenkins
-                </span>
+                <span className={tagClass}>AWS</span>
+                <span className={tagClass}>GCP</span>
+                <span className={tagClass}>Digital Ocean</span>
+                <span className={tagClass}>Hetzner</span>
+                <span className={tagClass}>CI/CD</span>
+                <span className={tagClass}>Terraform</span>
+                <span className={tagClass}>Docker</span>
+                <span className={tagClass}>Jenkins</span>
               </div>
             </div>
-            {/* Service 3 */}
+
+            {/* Service 3 - Mobile App Development */}
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in-delay-2">
-              <div className="w-14 h-14 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
-                <i className="fas fa-layer-group text-primary text-2xl" />
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4 rounded-lg">
+                <i className="fas fa-mobile-alt text-primary text-2xl" />
               </div>
               <h3 className="text-xl font-semibold mb-3">
-                End-to-End Delivery
+                Mobile App Development
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Complete solutions from concept to deployment and beyond.
+                Intuitive, cross-platform mobile apps for iOS & Android.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  UI/UX
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  APIs
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Dashboards
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  SEO
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Testing
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Security Best Practices
-                </span>
-                <span className="text-xs bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-200 px-2 py-1 rounded">
-                  Project management
-                </span>
+                <span className={tagClass}>Flutter</span>
+                <span className={tagClass}>React Native</span>
+              </div>
+            </div>
+
+            {/* Service 4 - UI/UX Design */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in-delay-3">
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4 rounded-lg">
+                <i className="fas fa-pencil-ruler text-primary text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">UI/UX Design</h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                Engaging, user-focused designs that drive conversions.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className={tagClass}>Figma</span>
+                <span className={tagClass}>Accessibility</span>
+                <span className={tagClass}>Prototyping</span>
+                <span className={tagClass}>Wireframes</span>
+                <span className={tagClass}>Interactive Designs</span>
+              </div>
+            </div>
+
+            {/* Service 5 - Shopify Development */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in-delay-4">
+              <div className="w-14 h-14 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
+                <i className="fab fa-shopify text-primary text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">
+                Shopify Development
+              </h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                Custom Shopify stores optimized for conversions.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className={tagClass}>SEO Optimization</span>
+                <span className={tagClass}>Custom Themes</span>
+                <span className={tagClass}>Liquid</span>
+                <span className={tagClass}>Apps</span>
+                <span className={tagClass}>Payment Gateways</span>
+              </div>
+            </div>
+
+            {/* Service 6 - Quality Assurance */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md card-hover transition-all fade-in-delay-5">
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4 rounded-lg">
+                <i className="fas fa-vials text-primary text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Quality Assurance</h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                Thorough testing and validation for bug-free products.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className={tagClass}>Unit Testing</span>
+                <span className={tagClass}>E2E Testing</span>
+                <span className={tagClass}>Integration Testing</span>
+                <span className={tagClass}>Performance Testing</span>
               </div>
             </div>
           </div>

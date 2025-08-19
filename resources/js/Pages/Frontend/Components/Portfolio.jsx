@@ -10,7 +10,7 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Selected Work
+              Our Previous Work
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Explore our recent projects and see how we've helped businesses
