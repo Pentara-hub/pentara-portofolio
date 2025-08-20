@@ -23,18 +23,30 @@ export default function Orbit({
 
   // 🔧 per-breakpoint tuning (edit these as you like)
   const cfg =
-    w < 640
-      ? { h: "h-[0px]", scale: 0, shift: 0, origin: "center" } // hidden on mobile if container omitted
-      : w < 951
-      ? { h: "h-[360px]", scale: 1.2, shift: 0, origin: "center right" }
+    w < 970
+      ? { h: "h-[720px]", scale: 1.1836, shift: 30, origin: "center right" }
       : w < 1024
-      ? { h: "h-[520px]", scale: 1.28, shift: 40, origin: "center right" } // 👈 768–1023px (your screenshot)
+      ? { h: "h-[720px]", scale: 1.1836, shift: 30, origin: "center right" }
+      : w < 1080
+      ? { h: "h-[700px]", scale: 1.1899, shift: 30.5, origin: "center right" }
+      : w < 1130
+      ? { h: "h-[680px]", scale: 1.1965, shift: 30, origin: "center right" }
+      : w < 1170
+      ? { h: "h-[680px]", scale: 1.1967, shift: 30, origin: "center right" }
+      : w < 1190
+      ? { h: "h-[680px]", scale: 1.1969, shift: 30, origin: "center right" }
+      : w < 1220
+      ? { h: "h-[680px]", scale: 1.1969, shift: 15, origin: "center right" }
       : w < 1280
-      ? { h: "h-[600px]", scale: 1.25, shift: 30, origin: "center right" }
-      : { h: "h-[680px]", scale: 1.4, shift: 60, origin: "center right" };
+      ? { h: "h-[680px]", scale: 1.1969, shift: 15, origin: "center right" }
+      : {
+          h: "h-[680px]",
+          scale: 1.198,
+          shift: 80,
+          origin: "center right",
+        };
 
-  // If you completely hide on mobile, you can also return null when w<640
-  if (w < 640) return null;
+  if (w < 940) return null;
 
   return (
     <div
