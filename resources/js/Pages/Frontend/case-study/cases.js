@@ -1,4 +1,4 @@
-export const DEFAULT_SLUG = "EduKids";
+export const DEFAULT_SLUG = "eduKids";
 
 export const CASES = {
   edukids: {
@@ -71,7 +71,7 @@ export const CASES = {
       { type: "img", src: "images/case-shop-home.jpg", alt: "Home" },
       { type: "img", src: "images/case-shop-pdp.jpg", alt: "PDP" },
     ],
-    related: ["EduKids", "newshub", "soundwave"],
+    related: ["eduKids", "newshub", "soundwave"],
   },
 
   mesteral: {
@@ -137,7 +137,7 @@ export const CASES = {
       { type: "img", src: "images/case-sound-1.jpg", alt: "Player" },
       { type: "img", src: "images/case-sound-2.jpg", alt: "Feed" },
     ],
-    related: ["newshub", "mesteral", "EduKids"],
+    related: ["newshub", "mesteral", "eduKids"],
   },
 
   schedulepro: {
@@ -150,6 +150,6 @@ export const CASES = {
       { type: "img", src: "images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["mesteral", "shopswift", "EduKids"],
+    related: ["mesteral", "shopswift", "eduKids"],
   },
 };

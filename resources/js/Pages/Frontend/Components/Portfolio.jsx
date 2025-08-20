@@ -21,7 +21,7 @@ const Portfolio = () => {
           {/* EduKids */}
           <Link
             to="/case-study/edukids"
-            aria-label="Open case study: EduKids"
+            aria-label="Open case study: eduKids"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -52,7 +52,10 @@ const Portfolio = () => {
                   Laravel
                 </span>
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  AWS
+                  Inertia.js
+                </span>
+                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
+                  MySQL
                 </span>
               </div>
               <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">

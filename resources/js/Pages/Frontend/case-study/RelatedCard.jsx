@@ -4,14 +4,14 @@ import { CASES, DEFAULT_SLUG } from "./cases";
 
 const GRADIENTS = {
   default: "from-blue-500 to-cyan-400",
-  EduKids: "from-blue-500 to-cyan-400",
+  eduKids: "from-blue-500 to-cyan-400",
   shopswift: "from-fuchsia-500 to-pink-500",
   mesteral: "from-emerald-500 to-teal-400",
 };
 
 const FA_ICONS = {
-  default: "fas fa-layer-group",
-  EduKids: "fas fa-graduation-cap",
+  default: "fas fa-graduation-cap",
+  eduKids: "fas fa-graduation-cap",
   shopswift: "fas fa-shopping-bag",
   mesteral: "fas fa-notes-medical",
 };
