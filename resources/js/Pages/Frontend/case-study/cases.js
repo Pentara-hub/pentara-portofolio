@@ -25,7 +25,7 @@ export const CASES = {
     gallery: [
       {
         type: "img",
-        src: "/assets/images/projects/lms/home.png",
+        src: "/images/projects/lms/home.png",
         alt: "Learner dashboard",
       },
       {
@@ -70,53 +70,53 @@ export const CASES = {
     gallery: [
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/discover.png",
+        src: "/images/projects/fairwheels/discover.png",
         alt: "FairWheels — Home",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/singleCar.png",
+        src: "/images/projects/fairwheels/singleCar.png",
         alt: "Single Car View",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/AI-1.png",
+        src: "/images/projects/fairwheels/AI-1.png",
         alt: "Price Prediction",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/AI-2.png",
+        src: "/images/projects/fairwheels/AI-2.png",
         alt: "Price Prediction",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/blog.png",
+        src: "/images/projects/fairwheels/blog.png",
         alt: "Blog",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/sell.png",
+        src: "/images/projects/fairwheels/sell.png",
         alt: "Sell your car",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/ai-rec.png",
+        src: "/images/projects/fairwheels/ai-rec.png",
         alt: "Sell your car",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/listed.png",
+        src: "/images/projects/fairwheels/listed.png",
         alt: "Listed Cars",
       },
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/chat.png",
+        src: "/images/projects/fairwheels/chat.png",
         alt: "Sell your car",
       },
 
       {
         type: "img",
-        src: "/assets/images/projects/fairwheels/admin.png",
+        src: "/images/projects/fairwheels/admin.png",
         alt: "Sell your car",
       },
     ],
@@ -145,17 +145,17 @@ export const CASES = {
     gallery: [
       {
         type: "img",
-        src: "/assets/images/projects/mesteral/home.png",
+        src: "/images/projects/mesteral/home.png",
         alt: "home page",
       },
       {
         type: "img",
-        src: "/assets/images/projects/mesteral/news.png",
+        src: "/images/projects/mesteral/news.png",
         alt: "news page",
       },
       {
         type: "img",
-        src: "/assets/images/projects/mesteral/products.png",
+        src: "/images/projects/mesteral/products.png",
         alt: "news page",
       },
     ],
@@ -170,8 +170,8 @@ export const CASES = {
     goals: ["Realtime sync", "Offline mode", "Source dedupe", "Topic graph"],
     features: ["Topic graph", "Saved lists", "Offline cache", "Smart dedupe"],
     gallery: [
-      { type: "img", src: "images/case-news-1.jpg", alt: "Feed" },
-      { type: "img", src: "images/case-news-2.jpg", alt: "Topic graph" },
+      { type: "img", src: "/images/case-news-1.jpg", alt: "Feed" },
+      { type: "img", src: "/images/case-news-2.jpg", alt: "Topic graph" },
     ],
     related: ["shopswift", "soundwave", "schedulepro"],
   },
@@ -183,8 +183,8 @@ export const CASES = {
     goals: ["Gapless playback", "Social graph", "Moderation tools"],
     features: ["Gapless HLS", "Playlists", "Social feed", "Moderation"],
     gallery: [
-      { type: "img", src: "images/case-sound-1.jpg", alt: "Player" },
-      { type: "img", src: "images/case-sound-2.jpg", alt: "Feed" },
+      { type: "img", src: "/images/case-sound-1.jpg", alt: "Player" },
+      { type: "img", src: "/images/case-sound-2.jpg", alt: "Feed" },
     ],
     related: ["newshub", "mesteral", "EduKids"],
   },
@@ -196,8 +196,8 @@ export const CASES = {
     goals: ["Complex constraints", "What-if sim", "SSO/SAML"],
     features: ["Scenario sim", "Role rules", "CSV import/export", "Audit"],
     gallery: [
-      { type: "img", src: "images/case-sched-1.jpg", alt: "Scheduler" },
-      { type: "img", src: "images/case-sched-2.jpg", alt: "Utilization" },
+      { type: "img", src: "/images/case-sched-1.jpg", alt: "Scheduler" },
+      { type: "img", src: "/images/case-sched-2.jpg", alt: "Utilization" },
     ],
     related: ["mesteral", "shopswift", "EduKids"],
   },
