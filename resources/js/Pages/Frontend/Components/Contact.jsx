@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Select from "react-select";
+import BookingButton from "./BookingButton";
 
 const Contact = () => {
   const [projectType, setProjectType] = useState("");
@@ -318,10 +319,10 @@ const Contact = () => {
                     <div className="ml-4">
                       <h4 className="font-medium">Email Us</h4>
                       <a
-                        href="mailto:hello@pentara.dev"
+                        href="mailto:pentarahub@gmail.com"
                         className="opacity-80 hover:opacity-100 transition-all"
                       >
-                        hello@pentara.dev
+                        PentaraHub@gmail.com{" "}
                       </a>
                     </div>
                   </div>
@@ -332,7 +333,7 @@ const Contact = () => {
                     <div className="ml-4">
                       <h4 className="font-medium">Based In</h4>
                       <p className="opacity-80">
-                        San Francisco, CA &amp; Remote Worldwide
+                        Cairo, Egypt &amp; Remote Worldwide
                       </p>
                     </div>
                   </div>
@@ -343,7 +344,7 @@ const Contact = () => {
                     <div className="ml-4">
                       <h4 className="font-medium">Availability</h4>
                       <p className="opacity-80">
-                        Monday - Friday: 9AM - 5PM PST
+                        Monday–Friday · 9:00 AM–5:00 PM PT{" "}
                       </p>
                     </div>
                   </div>
@@ -357,9 +358,7 @@ const Contact = () => {
                       Prefer to talk directly? Book a 30-minute discovery call
                       with our team.
                     </p>
-                    <button className="w-full bg-accent hover:bg-opacity-90 text-dark font-medium py-3 px-6 rounded-lg transition-all">
-                      <i className="fas fa-calendar-alt mr-2" /> Book a Call
-                    </button>
+                    <BookingButton />
                   </div>
                 </div>
               </div>
