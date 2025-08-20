@@ -11,7 +11,7 @@ export default function Hero() {
     >
       <section
         id="home"
-        className="pt-24 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       >
         <div className="hero-grid grid md:grid-cols-2 items-center">
           {/* left column (text) */}
@@ -20,7 +20,7 @@ export default function Hero() {
               Build fast. <br />
               <span className="gradient-text">Deploy anywhere.</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300">
+            <p className="text-lg md:text-xl  text-slate-600 dark:text-slate-300">
               We design, develop, and deploy full-stack web apps and cloud
               infrastructure that scale.
             </p>
