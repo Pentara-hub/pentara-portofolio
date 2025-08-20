@@ -17,7 +17,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="/public/images/Abdelrahman.jpg"
+                  src="/images/Abdelrahman.jpg"
                   alt="Abdelrahman Mohamed"
                   className="w-full h-full object-cover"
                 />
@@ -50,7 +50,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-1">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="/public/images/Ahmed.jpg"
+                  src="/images/Ahmed.jpg"
                   alt="Ahmed Medhat"
                   className="w-full h-full object-cover"
                 />
@@ -82,7 +82,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-2">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="/public/images/Omar.Jpg"
+                  src="/images/Omar.Jpg"
                   alt="Omar Elsamni"
                   className="w-full h-full object-cover"
                 />
