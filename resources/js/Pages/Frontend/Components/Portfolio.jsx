@@ -64,8 +64,8 @@ const Portfolio = () => {
 
           {/* ShopSwift */}
           <Link
-            to="/case-study/shopswift"
-            aria-label="Open case study: ShopSwift"
+            to="/case-study/fairwheels"
+            aria-label="Open case study: Fairwheels"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -82,20 +82,23 @@ const Portfolio = () => {
             </div>
             <div className="p-6 bg-white dark:bg-transparent">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                ShopSwift
+                FairWheels
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
                 High-performance e-commerce platform with AI recommendations.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Next.js
+                  React
                 </span>
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Node.js
+                  Inertia
                 </span>
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  MongoDB
+                  Laravel
+                </span>
+                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
+                  MySql
                 </span>
               </div>
               <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">

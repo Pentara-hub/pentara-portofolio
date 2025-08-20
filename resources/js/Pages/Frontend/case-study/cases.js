@@ -48,28 +48,77 @@ export const CASES = {
     related: ["shopswift", "datainsight", "newshub"],
   },
 
-  shopswift: {
-    title: "ShopSwift",
-    subtitle:
-      "High-performance commerce with AI recommendations and lightning checkout.",
+  fairwheels: {
+    title: "FairWheels",
+    subtitle: "AI-Powered Car Retail Web Service",
     overview:
-      "Migrated from WooCommerce to a headless stack. Introduced product embeddings for “similar items” and edge-cached PDPs.",
+      "FairWheels blends machine learning with a modern web stack to make used-car trading transparent and smart. It predicts fair prices, lets buyers compare vehicles side-by-side, and enables community Q&A for better decisions.",
     goals: [
-      "<2s LCP globally",
-      "One-click checkout",
-      "Inventory sync with ERP",
-      "Personalized PDP sections",
+      "Accurate used-car price prediction",
+      "Interactive comparisons & Q&A",
+      "Transparent pricing and UX",
+      "Rule-based filtering & custom search",
     ],
     features: [
-      "AI recommendations",
-      "Edge caching (ISR)",
-      "Guest checkout",
-      "Discount engine",
-      "Admin portal",
+      "AI price prediction (Linear Regression)",
+      "Vehicle comparison tools",
+      "Q&A forum for buyer–seller interaction",
+      "Rule-based filters and custom queries",
+      "Seller & buyer dashboards",
+      "Listing with AI valuation",
     ],
     gallery: [
-      { type: "img", src: "images/case-shop-home.jpg", alt: "Home" },
-      { type: "img", src: "images/case-shop-pdp.jpg", alt: "PDP" },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/discover.png",
+        alt: "FairWheels — Home",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/singleCar.png",
+        alt: "Single Car View",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/AI-1.png",
+        alt: "Price Prediction",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/AI-2.png",
+        alt: "Price Prediction",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/blog.png",
+        alt: "Blog",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/sell.png",
+        alt: "Sell your car",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/ai-rec.png",
+        alt: "Sell your car",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/listed.png",
+        alt: "Listed Cars",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/chat.png",
+        alt: "Sell your car",
+      },
+
+      {
+        type: "img",
+        src: "/assets/images/projects/fairwheels/admin.png",
+        alt: "Sell your car",
+      },
     ],
     related: ["EduKids", "newshub", "soundwave"],
   },
