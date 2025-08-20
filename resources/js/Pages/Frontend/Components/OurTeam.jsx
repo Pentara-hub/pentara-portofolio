@@ -82,7 +82,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-2">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="/images/Omar.jpg"
+                  src="/images/samni.jpg"
                   alt="Omar Elsamni"
                   className="w-full h-full object-cover"
                 />
