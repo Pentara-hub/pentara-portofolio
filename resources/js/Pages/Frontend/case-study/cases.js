@@ -45,7 +45,7 @@ export const CASES = {
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
     ],
-    related: ["shopswift", "datainsight", "newshub"],
+    related: ["shopswift", "mesteral", "newshub"],
   },
 
   shopswift: {
@@ -74,23 +74,43 @@ export const CASES = {
     related: ["EduKids", "newshub", "soundwave"],
   },
 
-  datainsight: {
-    title: "DataInsight",
-    subtitle: "Realtime BI for ops with live widgets and alerting.",
+  mesteral: {
+    title: "MESTERAL",
+    subtitle: "Pharma website & product catalog (MENA/CIS)",
     overview:
-      "Unified fragmented data sources into a single pane. Role-based dashboards and anomaly alerts.",
+      "A clean, fast portfolio build showcasing Mesteral’s services, product lines, regional footprint, and lead-gen paths.",
     goals: [
-      "Unify 6 data sources",
-      "Row-level security",
-      "Exportable reports",
-      "Slack alerts",
+      "Build brand trust with clear story & stats",
+      "Drive partner inquiries with focused CTAs",
+      "Make products easy to find and download",
+      "Keep updates simple via News & FAQs",
     ],
-    features: ["RBAC", "Anomaly alerts", "Widget builder", "CSV/Excel export"],
+    features: [
+      "Services hub for market entry, distributors, and regulation",
+      "Product catalog with categories, search, filters, and PDFs",
+      "News & Events feed with simple date ordering",
+      "FAQ to reduce repetitive questions",
+      "About with vision, milestones, and KPIs",
+      "Contact hub with form, phone, and email",
+    ],
     gallery: [
-      { type: "img", src: "images/case-bi-1.jpg", alt: "Dashboard" },
-      { type: "img", src: "images/case-bi-2.jpg", alt: "Alerts" },
+      {
+        type: "img",
+        src: "/assets/images/projects/mesteral/home.png",
+        alt: "home page",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/mesteral/news.png",
+        alt: "news page",
+      },
+      {
+        type: "img",
+        src: "/assets/images/projects/mesteral/products.png",
+        alt: "news page",
+      },
     ],
-    related: ["shopswift", "schedulepro", "newshub"],
+    related: ["edukids", "shopswift", "mesteral"],
   },
 
   newshub: {
@@ -117,7 +137,7 @@ export const CASES = {
       { type: "img", src: "images/case-sound-1.jpg", alt: "Player" },
       { type: "img", src: "images/case-sound-2.jpg", alt: "Feed" },
     ],
-    related: ["newshub", "datainsight", "EduKids"],
+    related: ["newshub", "mesteral", "EduKids"],
   },
 
   schedulepro: {
@@ -130,6 +150,6 @@ export const CASES = {
       { type: "img", src: "images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["datainsight", "shopswift", "EduKids"],
+    related: ["mesteral", "shopswift", "EduKids"],
   },
 };

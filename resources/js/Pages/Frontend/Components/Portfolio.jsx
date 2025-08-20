@@ -105,10 +105,10 @@ const Portfolio = () => {
             </div>
           </Link>
 
-          {/* DataInsight */}
+          {/* mesteral */}
           <Link
-            to="/case-study/datainsight"
-            aria-label="Open case study: DataInsight"
+            to="/case-study/mesteral"
+            aria-label="Open case study: mesteral"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -119,13 +119,13 @@ const Portfolio = () => {
           >
             <div className="h-40 bg-gradient-to-r from-green-500 to-teal-400 grid place-items-center">
               <i
-                className="fas fa-chart-pie text-white text-5xl"
+                className="fas fa-notes-medical text-white text-5xl"
                 aria-hidden="true"
               />
             </div>
             <div className="p-6 bg-white dark:bg-transparent">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                DataInsight
+                Mesteral
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
                 Business intelligence dashboard with real-time analytics.
