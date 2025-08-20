@@ -61,7 +61,7 @@ export default function Header() {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
               <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center">
-                <img src="/assets/images/logo.png" alt="Pentara logo" />
+                <img src="/images/logo.png" alt="Pentara logo" />
               </div>
               <span className="text-xl font-semibold ml-2 mt-1">Pentara</span>
             </Link>
