@@ -34,19 +34,15 @@ module.exports = async (req, res) => {
       .status(400)
       .json({ success: false, message: "Please select your budget range." });
   if (!message.trim())
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "Please include project details in your message.",
-      });
+    return res.status(400).json({
+      success: false,
+      message: "Please include project details in your message.",
+    });
   if (projectType === "Other" && !otherProjectType) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "Please specify your project type when selecting 'Other'.",
-      });
+    return res.status(400).json({
+      success: false,
+      message: "Please specify your project type when selecting 'Other'.",
+    });
   }
 
   const displayType =
