@@ -17,7 +17,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="assets/images/Abdelrahman.jpg"
+                  src="/public/images/Abdelrahman.jpg"
                   alt="Abdelrahman Mohamed"
                   className="w-full h-full object-cover"
                 />
@@ -50,7 +50,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-1">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="assets/images/Ahmed.jpg"
+                  src="/public/images/Ahmed.jpg"
                   alt="Ahmed Medhat"
                   className="w-full h-full object-cover"
                 />
@@ -82,7 +82,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-2">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="assets/images/Omar.Jpg"
+                  src="/public/images/Omar.Jpg"
                   alt="Omar Elsamni"
                   className="w-full h-full object-cover"
                 />
@@ -114,7 +114,7 @@ const OurTeam = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md text-center card-hover transition-all fade-in-delay-3">
               <div className="w-32 h-400 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
                 <img
-                  src="assets/images/Osama.jpg"
+                  src="/public/images/Osama.jpg"
                   alt="Osama Medhat"
                   className="w-full h-full object-cover"
                 />

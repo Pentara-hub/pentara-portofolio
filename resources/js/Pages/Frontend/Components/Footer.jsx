@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex items-center mb-4">
               <div className="flex-shrink-0 flex items-center">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src="/assets/images/logo.png" alt="Pentara logo" />
+                  <img src="/public/images/logo.png" alt="Pentara logo" />
                 </div>
               </div>
               <span className="text-xl font-semibold ml-3 mt-1">Pentara</span>
