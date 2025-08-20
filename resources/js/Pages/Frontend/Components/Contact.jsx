@@ -48,23 +48,26 @@ const Contact = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3000/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
 
-      if (data.success) {
-        toast.success("Message sent!");
-        e.target.reset();
-        setProjectType("");
-        setBudget("");
-      } else {
-        toast.error(data.message || "Failed to send.");
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.message || "Failed to send.");
       }
-    } catch {
-      toast.error("⚠️ Something went wrong. Try again later.");
+
+      toast.success("Message sent!");
+      e.target.reset();
+      setProjectType("");
+      setBudget("");
+    } catch (err) {
+      toast.error(
+        `⚠️ ${err.message || "Something went wrong. Try again later."}`
+      );
     } finally {
       setLoading(false);
     }
@@ -124,6 +127,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
+
                 <div>
                   <label
                     htmlFor="company"
@@ -139,6 +143,7 @@ const Contact = () => {
                     placeholder="Your company (optional)"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="project-type"
@@ -151,7 +156,7 @@ const Contact = () => {
                     value={
                       projectTypes.find((p) => p.value === projectType) || null
                     }
-                    onChange={(option) => setProjectType(option?.value ?? null)}
+                    onChange={(option) => setProjectType(option?.value ?? "")}
                     placeholder="Select project type"
                     isSearchable={false}
                     styles={{
@@ -179,10 +184,7 @@ const Contact = () => {
                         cursor: "pointer",
                         padding: "10px 12px",
                       }),
-                      singleValue: (base) => ({
-                        ...base,
-                        color: "white",
-                      }),
+                      singleValue: (base) => ({ ...base, color: "white" }),
                       placeholder: (base) => ({
                         ...base,
                         color: "rgba(255,255,255,0.6)",
@@ -195,14 +197,13 @@ const Contact = () => {
                         type="text"
                         id="other-project-type"
                         name="otherProjectType"
-                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 
-        focus:border-white/50 focus:ring-2 focus:ring-white/20 
-        focus:outline-none transition-all placeholder-white/50"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                         placeholder="Please specify"
                       />
                     </div>
                   )}
                 </div>
+
                 <div>
                   <label
                     htmlFor="budget"
@@ -210,11 +211,10 @@ const Contact = () => {
                   >
                     Budget Range
                   </label>
-
                   <Select
                     options={budgets}
                     value={budget ? { value: budget, label: budget } : null}
-                    onChange={(options) => setBudget(options.value)}
+                    onChange={(option) => setBudget(option?.value ?? "")}
                     isSearchable={false}
                     placeholder="Select budget range"
                     className="text-white"
@@ -243,10 +243,7 @@ const Contact = () => {
                         cursor: "pointer",
                         padding: "10px 12px",
                       }),
-                      singleValue: (base) => ({
-                        ...base,
-                        color: "white",
-                      }),
+                      singleValue: (base) => ({ ...base, color: "white" }),
                       placeholder: (base) => ({
                         ...base,
                         color: "rgba(255,255,255,0.6)",
@@ -254,6 +251,7 @@ const Contact = () => {
                     }}
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="message"
@@ -266,9 +264,10 @@ const Contact = () => {
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all placeholder-white/50"
                     placeholder="Tell us about your project..."
-                    defaultValue={""}
+                    defaultValue=""
                   />
                 </div>
+
                 <div>
                   <button
                     type="submit"
@@ -306,6 +305,7 @@ const Contact = () => {
                 </div>
               </form>
             </div>
+
             <div className="lg:w-1/2 fade-in-delay-1">
               <div className="bg-white/10 rounded-xl p-8 h-full border border-white/20 backdrop-blur-sm">
                 <h3 className="text-xl font-semibold mb-6">
