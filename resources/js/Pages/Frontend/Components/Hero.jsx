@@ -13,9 +13,9 @@ export default function Hero() {
         id="home"
         className="pt-24 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       >
-        <div className="hero-grid grid md:grid-cols-2 items-center gap-8">
+        <div className="hero-grid grid md:grid-cols-2 items-center">
           {/* left column (text) */}
-          <div className="hero-text space-y-6 pr-12">
+          <div className="hero-text space-y-6 ">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Build fast. <br />
               <span className="gradient-text">Deploy anywhere.</span>
@@ -41,7 +41,7 @@ export default function Hero() {
           </div>
 
           {/* right column (3D) — will be hidden by CSS at ≤950px */}
-          <div className="hero-orbit hidden md:block md:pl-6 lg:pl-10 xl:pl-16">
+          <div className="hero-orbit hidden md:block md:pl-6 lg:pl-10 xl:p-0 md:-ml-2">
             <div className="w-full max-w-[620px] lg:max-w-[720px] xl:max-w-[820px] mx-auto">
               <Orbit />
             </div>
