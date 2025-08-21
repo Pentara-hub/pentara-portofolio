@@ -1,7 +1,7 @@
 import Orbit from "./Orbit";
 import { useState, useEffect } from "react";
 
-const TypingText = ({ text, speed = 80, start = true, onComplete }) => {
+const TypingText = ({ text, speed = 200, start = true, onComplete }) => {
   const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
 
@@ -27,7 +27,7 @@ export default function Hero() {
 
   return (
     <div
-      className="pb-10"
+      className="md:pb-36 "
       style={{
         background:
           "radial-gradient(1200px 600px at 80% -10%, rgba(29, 78, 216, 0.25), transparent 60%), radial-gradient(900px 500px at 10% -10%, rgba(56, 189, 248, 0.25), transparent 60%)",
@@ -39,7 +39,7 @@ export default function Hero() {
     pt-24
     md:pt-40          /* ≥768px → pt-40 */
     min-[950px]:pt-0 /* ≤950px → still pt-40 */
-    lg:pt-2          /* ≥1024px → back to pt-24 */
+    lg:pt-3          /* ≥1024px → back to pt-24 */
     px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto
   "
       >
