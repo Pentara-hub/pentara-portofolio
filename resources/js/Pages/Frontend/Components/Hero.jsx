@@ -7,24 +7,23 @@ const TypingText = ({ text, speed = 80, start = true, onComplete }) => {
 
   useEffect(() => {
     if (!start) return;
-
     if (index < text.length) {
       const timeout = setTimeout(() => {
         setDisplayed((prev) => prev + text.charAt(index));
         setIndex(index + 1);
       }, speed);
-
       return () => clearTimeout(timeout);
-    } else if (index === text.length && onComplete) {
+    } else if (onComplete) {
       onComplete();
     }
-  }, [index, text, speed, start, onComplete]);
+  }, [index, text, speed, start]);
 
   return <span>{displayed}</span>;
 };
 
 export default function Hero() {
   const [firstDone, setFirstDone] = useState(false);
+  const [secondDone, setSecondDone] = useState(false);
 
   return (
     <div
@@ -59,27 +58,33 @@ export default function Hero() {
                   text="Deploy anywhere."
                   speed={80}
                   start={firstDone}
+                  onComplete={() => setSecondDone(true)}
                 />
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 animate-fade-in">
-              We design, develop, and deploy full-stack web apps and cloud
-              infrastructure that scale.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#contact"
-                className="bg-primary hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-lg transition-all text-center shadow-lg"
-              >
-                Get a proposal
-              </a>
-              <a
-                href="#work"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded-lg transition-all text-center"
-              >
-                See our work
-              </a>
-            </div>
+            {secondDone && (
+              <div className="opacity-0 transition-opacity  ease-in-out animate-[fadeIn_1.5s_ease-in-out_forwards] space-y-6">
+                {" "}
+                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 animate-fade-in">
+                  We design, develop, and deploy full-stack web apps and cloud
+                  infrastructure that scale.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="#contact"
+                    className="bg-primary hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-lg transition-all text-center shadow-lg"
+                  >
+                    Get a proposal
+                  </a>
+                  <a
+                    href="#work"
+                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded-lg transition-all text-center"
+                  >
+                    See our work
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* right column (3D) — will be hidden by CSS at ≤950px */}
