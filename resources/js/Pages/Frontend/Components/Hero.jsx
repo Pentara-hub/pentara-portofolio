@@ -1,6 +1,31 @@
 import Orbit from "./Orbit";
+import { useState, useEffect } from "react";
+
+const TypingText = ({ text, speed = 80, start = true, onComplete }) => {
+  const [index, setIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+
+  useEffect(() => {
+    if (!start) return;
+
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayed((prev) => prev + text.charAt(index));
+        setIndex(index + 1);
+      }, speed);
+
+      return () => clearTimeout(timeout);
+    } else if (index === text.length && onComplete) {
+      onComplete();
+    }
+  }, [index, text, speed, start, onComplete]);
+
+  return <span>{displayed}</span>;
+};
 
 export default function Hero() {
+  const [firstDone, setFirstDone] = useState(false);
+
   return (
     <div
       className="pb-10"
@@ -23,10 +48,21 @@ export default function Hero() {
           {/* left column (text) */}
           <div className="hero-text space-y-6 ">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Build fast. <br />
-              <span className="gradient-text">Deploy anywhere.</span>
+              <TypingText
+                text="Build fast."
+                speed={80}
+                onComplete={() => setFirstDone(true)}
+              />
+              <br />
+              <span className="gradient-text">
+                <TypingText
+                  text="Deploy anywhere."
+                  speed={80}
+                  start={firstDone}
+                />
+              </span>
             </h1>
-            <p className="text-lg md:text-xl  text-slate-600 dark:text-slate-300">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 animate-fade-in">
               We design, develop, and deploy full-stack web apps and cloud
               infrastructure that scale.
             </p>
