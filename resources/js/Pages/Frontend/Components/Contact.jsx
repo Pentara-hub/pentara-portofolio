@@ -305,9 +305,12 @@ const Contact = () => {
                 </div>
               </form>
             </div>
-
             <div className="lg:w-1/2 fade-in-delay-1">
-              <div className="bg-white/10 rounded-xl p-8 h-full border border-white/20 backdrop-blur-sm">
+              <div
+                className={`bg-white/10 rounded-xl p-8 h-full border border-white/20 backdrop-blur-sm
+                   transition-opacity duration-200
+                  `}
+              >
                 <h3 className="text-xl font-semibold mb-6">
                   Contact Information
                 </h3>
