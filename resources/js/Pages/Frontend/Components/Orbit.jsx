@@ -26,19 +26,19 @@ export default function Orbit({
     w < 970
       ? { h: "h-[720px]", scale: 1.1836, shift: 30, origin: "center right" }
       : w < 1024
-      ? { h: "h-[720px]", scale: 1.1836, shift: 30, origin: "center right" }
+      ? { h: "h-[720px]", scale: 1.189, shift: 30, origin: "center right" }
       : w < 1080
-      ? { h: "h-[700px]", scale: 1.1899, shift: 30.5, origin: "center right" }
+      ? { h: "h-[700px]", scale: 1.197, shift: 30.5, origin: "center right" }
       : w < 1130
-      ? { h: "h-[680px]", scale: 1.1965, shift: 30, origin: "center right" }
+      ? { h: "h-[680px]", scale: 1.1975, shift: 30, origin: "center right" }
       : w < 1170
-      ? { h: "h-[680px]", scale: 1.1967, shift: 30, origin: "center right" }
+      ? { h: "h-[680px]", scale: 1.1975, shift: 30, origin: "center right" }
       : w < 1190
       ? { h: "h-[680px]", scale: 1.1969, shift: 30, origin: "center right" }
       : w < 1220
-      ? { h: "h-[680px]", scale: 1.1969, shift: 15, origin: "center right" }
+      ? { h: "h-[680px]", scale: 1.1979, shift: 15, origin: "center right" }
       : w < 1280
-      ? { h: "h-[680px]", scale: 1.1969, shift: 15, origin: "center right" }
+      ? { h: "h-[680px]", scale: 1.1975, shift: 15, origin: "center right" }
       : {
           h: "h-[680px]",
           scale: 1.198,

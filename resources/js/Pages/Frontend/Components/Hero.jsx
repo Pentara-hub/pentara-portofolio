@@ -11,7 +11,13 @@ export default function Hero() {
     >
       <section
         id="home"
-        className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        className="
+    pt-24
+    md:pt-40          /* ≥768px → pt-40 */
+    min-[950px]:pt-0 /* ≤950px → still pt-40 */
+    lg:pt-2          /* ≥1024px → back to pt-24 */
+    px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto
+  "
       >
         <div className="hero-grid grid md:grid-cols-2 items-center">
           {/* left column (text) */}
