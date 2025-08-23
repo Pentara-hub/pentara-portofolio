@@ -31,6 +31,13 @@ function Gallery({
   showDots = true,
   allowFullscreen = true,
 }) {
+  const [isPortrait, setIsPortrait] = useState(false);
+
+  const handleLoad = (e) => {
+    const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
+    setIsPortrait(h > w);
+  };
+
   const [current, setCurrent] = useState(0);
   const [isFs, setIsFs] = useState(false);
 
@@ -91,7 +98,7 @@ function Gallery({
         key={`i-${it.src}`}
         src={it.src}
         alt={it.alt || ""}
-        className={`block mx-auto max-w-full h-auto ${fitClass} transition-opacity duration-500 ease-out ${
+        className={`block mx-auto w-full h-auto max-h-[552px] object-contain transition-opacity duration-500 ease-out ${
           isActive ? "opacity-100" : "opacity-0"
         } select-none rounded-2xl`}
         loading={isActive ? "eager" : "lazy"}
@@ -311,14 +318,14 @@ function Gallery({
             <div className="relative w-full max-w-6xl pointer-events-auto">
               <button
                 onClick={() => mainRef.current?.slidePrev()}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/40"
+                className="absolute -left-12 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/40"
                 aria-label="Previous"
               >
                 <ChevronLeft />
               </button>
               <button
                 onClick={() => mainRef.current?.slideNext()}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/40"
+                className="absolute -right-12 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/40"
                 aria-label="Next"
               >
                 <ChevronRight />
@@ -337,12 +344,19 @@ function Gallery({
                   />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item?.src}
-                    alt={item?.alt || ""}
-                    className="block mx-auto max-w-full h-auto object-contain rounded-lg"
-                    draggable={false}
-                  />
+                  <div className="relative w-full h-[85vh] px-4 grid place-items-center rounded-lg overflow-hidden">
+                    <img
+                      src={item?.src}
+                      alt={item?.alt || ""}
+                      onLoad={handleLoad}
+                      className={`${
+                        isPortrait
+                          ? "h-full w-auto" // fill height for tall phone screenshots
+                          : "w-full h-auto" // fill width for wide images
+                      } max-w-[92vw] max-h-[85vh] object-contain select-none`}
+                      draggable={false}
+                    />
+                  </div>
                 )}
               </div>
 

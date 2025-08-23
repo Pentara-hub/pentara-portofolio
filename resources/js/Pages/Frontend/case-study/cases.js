@@ -162,18 +162,51 @@ export const CASES = {
     related: ["edukids", "shopswift", "mesteral"],
   },
 
-  newshub: {
-    title: "NewsHub",
-    subtitle: "Personalized news aggregator with topic graphs.",
+  habittracker: {
+    title: "Habit Tracker",
+    subtitle: "Daily habit manager with heatmap progress visualization.",
     overview:
-      "Built a news feed with topic discovery and save-for-later across devices.",
-    goals: ["Realtime sync", "Offline mode", "Source dedupe", "Topic graph"],
-    features: ["Topic graph", "Saved lists", "Offline cache", "Smart dedupe"],
-    gallery: [
-      { type: "img", src: "/images/case-news-1.jpg", alt: "Feed" },
-      { type: "img", src: "/images/case-news-2.jpg", alt: "Topic graph" },
+      "Built a Flutter-based habit tracking app with Firebase authentication, offline storage, and progress heatmaps.",
+    goals: [
+      "User authentication",
+      "Daily habit logging",
+      "Progress visualization",
+      "Offline-first with Hive",
     ],
-    related: ["shopswift", "soundwave", "schedulepro"],
+    features: [
+      "User registration & login",
+      "Add, edit, delete habits",
+      "Daily tracking & completion logs",
+      "Calendar heatmap for progress",
+    ],
+    gallery: [
+      {
+        type: "img",
+        src: "/images/projects/habitTracker/Dashboard.png",
+        alt: "Dashboard",
+      },
+      {
+        type: "img",
+        src: "/images/projects/habitTracker/HeatmapProgress.png",
+        alt: "Heatmap progress",
+      },
+      {
+        type: "img",
+        src: "/images/projects/habitTracker/Edit.png",
+        alt: "Edit",
+      },
+      {
+        type: "img",
+        src: "/images/projects/habitTracker/Login.png",
+        alt: "Login",
+      },
+      {
+        type: "img",
+        src: "/images/projects/habitTracker/Register.png",
+        alt: "Register",
+      },
+    ],
+    related: ["edukids", "fairwheels", "mesteral"],
   },
 
   soundwave: {

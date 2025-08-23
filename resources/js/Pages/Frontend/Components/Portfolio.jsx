@@ -143,6 +143,9 @@ const Portfolio = () => {
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
                   Docker
                 </span>
+                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
+                  Node.js
+                </span>
               </div>
               <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
                 <span>View case study</span>
@@ -153,8 +156,8 @@ const Portfolio = () => {
 
           {/* NewsHub */}
           <Link
-            to="/case-study/newshub"
-            aria-label="Open case study: NewsHub"
+            to="/case-study/habittracker"
+            aria-label="Open case study:habit-tracker"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -165,23 +168,23 @@ const Portfolio = () => {
           >
             <div className="h-40 bg-gradient-to-r from-orange-500 to-yellow-400 grid place-items-center">
               <i
-                className="fas fa-newspaper text-white text-5xl"
+                className="fas fa-calendar-check text-white text-5xl"
                 aria-hidden="true"
               />
             </div>
             <div className="p-6 bg-white dark:bg-transparent">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                NewsHub
+                Habit Tracker
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                Modern news aggregator with personalized content delivery.
+                Daily habit manager with progress heatmaps and offline support.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  React
+                  Flutter
                 </span>
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  GraphQL
+                  Hive
                 </span>
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
                   Firebase
