@@ -45,7 +45,7 @@ export const CASES = {
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
     ],
-    related: ["shopswift", "mesteral", "newshub"],
+    related: ["fairwheels", "mesteral", "habittracker"],
   },
 
   fairwheels: {
@@ -120,7 +120,7 @@ export const CASES = {
         alt: "Sell your car",
       },
     ],
-    related: ["EduKids", "newshub", "soundwave"],
+    related: ["mymap", "mesteral", "edukids"],
   },
 
   mesteral: {
@@ -159,7 +159,7 @@ export const CASES = {
         alt: "news page",
       },
     ],
-    related: ["edukids", "shopswift", "mesteral"],
+    related: ["edukids", "fairwheels", "mesteral"],
   },
 
   habittracker: {
@@ -209,19 +209,41 @@ export const CASES = {
     related: ["edukids", "fairwheels", "mesteral"],
   },
 
-  soundwave: {
-    title: "SoundWave",
-    subtitle: "Music streaming with social features.",
-    overview: "Rebuilt the player & feed, added social graph and playlists.",
-    goals: ["Gapless playback", "Social graph", "Moderation tools"],
-    features: ["Gapless HLS", "Playlists", "Social feed", "Moderation"],
-    gallery: [
-      { type: "img", src: "/images/case-sound-1.jpg", alt: "Player" },
-      { type: "img", src: "/images/case-sound-2.jpg", alt: "Feed" },
+  mymap: {
+    title: "MyMap",
+    subtitle: "Workout Tracker with Maps",
+    overview:
+      "MyMap is a web application that lets users log running and cycling workouts with geolocation. Workouts are displayed on the map with popups and a workout list for easy tracking.",
+    goals: [
+      "Display users' current location on a map",
+      "Log running and cycling workouts",
+      "Place markers for each workout",
+      "Enable clicking on a workout to pan to its location on the map",
+      "Show workout details like distance, duration and speed",
+      "Persist data in local storage across page reloads",
     ],
-    related: ["newshub", "mesteral", "EduKids"],
+    features: [
+      "Real-time location tracking on map",
+      "Logging for running and cycling workouts",
+      "Markers for each workout",
+      "Detailed workout info (distance, duration, speed)",
+      "Data persistence using LocalStorage",
+      "Interactive map to jump to workout location",
+    ],
+    gallery: [
+      {
+        type: "img",
+        src: "/images/projects/MyMap/image.png",
+        alt: "Map display with workouts",
+      },
+      {
+        type: "img",
+        src: "/images/projects/MyMap/image2.png",
+        alt: "Workout list and details",
+      },
+    ],
+    related: ["habittracker", "mesteral", "edukids"],
   },
-
   schedulepro: {
     title: "SchedulePro",
     subtitle: "Enterprise scheduling & resource management.",
@@ -232,6 +254,6 @@ export const CASES = {
       { type: "img", src: "/images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "/images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["mesteral", "shopswift", "EduKids"],
+    related: ["mesteral", "shopswift", "edukids"],
   },
 };
