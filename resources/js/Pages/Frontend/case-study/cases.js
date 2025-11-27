@@ -1,7 +1,7 @@
-export const DEFAULT_SLUG = "EduKids";
+export const DEFAULT_SLUG = "Aklemy";
 
 export const CASES = {
-  edukids: {
+  Aklemy: {
     title: "Aklemy",
     subtitle: "A powerful LMS with smart quizzes learning",
     overview:
@@ -140,7 +140,7 @@ export const CASES = {
         alt: "Sell your car",
       },
     ],
-    related: ["mymap", "mesteral", "edukids"],
+    related: ["mymap", "mesteral", "Aklemy"],
   },
 
   mesteral: {
@@ -179,7 +179,7 @@ export const CASES = {
         alt: "news page",
       },
     ],
-    related: ["edukids", "fairwheels", "mesteral"],
+    related: ["Aklemy", "fairwheels", "mesteral"],
   },
 
   habittracker: {
@@ -226,7 +226,7 @@ export const CASES = {
         alt: "Register",
       },
     ],
-    related: ["edukids", "fairwheels", "mesteral"],
+    related: ["Aklemy", "fairwheels", "mesteral"],
   },
 
   mymap: {
@@ -262,7 +262,7 @@ export const CASES = {
         alt: "Workout list and details",
       },
     ],
-    related: ["habittracker", "mesteral", "edukids"],
+    related: ["habittracker", "mesteral", "Aklemy"],
   },
   schedulepro: {
     title: "SchedulePro",
@@ -274,6 +274,6 @@ export const CASES = {
       { type: "img", src: "/images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "/images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["mesteral", "shopswift", "edukids"],
+    related: ["mesteral", "shopswift", "Aklemy"],
   },
 };

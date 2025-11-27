@@ -18,10 +18,10 @@ const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* EduKids */}
+          {/* Aklemy */}
           <Link
-            to="/case-study/edukids"
-            aria-label="Open case study: EduKids"
+            to="/case-study/Aklemy"
+            aria-label="Open case study: Aklemy"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
