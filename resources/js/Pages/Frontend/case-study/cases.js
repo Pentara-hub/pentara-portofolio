@@ -40,7 +40,22 @@ export const CASES = {
       },
       {
         type: "img",
+        src: "/images/projects/lms/dashboard.png",
+        alt: "Course authoring",
+      },
+      {
+        type: "img",
         src: "/images/projects/lms/quiz-ans.png",
+        alt: "Course authoring",
+      },
+      {
+        type: "img",
+        src: "/images/projects/lms/attemps.png",
+        alt: "Course authoring",
+      },
+      {
+        type: "img",
+        src: "/images/projects/lms/Analytics.png",
         alt: "Course authoring",
       },
       {
