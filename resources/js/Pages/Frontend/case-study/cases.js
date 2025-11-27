@@ -2,10 +2,10 @@ export const DEFAULT_SLUG = "EduKids";
 
 export const CASES = {
   edukids: {
-    title: "EduKids",
+    title: "Aklemy",
     subtitle: "A powerful LMS with smart quizzes learning",
     overview:
-      "EduKids is a kid-friendly Learning Management System that blends engaging lessons with a robust quiz engine. Designed for schools, tutors, and edtech startups, EduKids supports multimedia courses, adaptive assessments, and real-time progress tracking—wrapped in a clean, accessible interface that works beautifully on web and mobile. Under the hood, it’s ready for scale and multilingual classrooms, making it easy to launch, manage, and continuously improve learning experiences.",
+      "Aklemy is a Learning Management System that blends engaging lessons with a robust quiz engine. Designed for schools, tutors, and edtech startups, Aklemy supports multimedia courses, adaptive assessments, and real-time progress tracking—wrapped in a clean, accessible interface that works beautifully on web and mobile. Under the hood, it’s ready for scale and multilingual classrooms, making it easy to launch, manage, and continuously improve learning experiences.",
     goals: [
       "Measure understanding via smart quizzes and analytics",
       "Reduce teacher workload with authoring, auto-grading, and feedback",
@@ -41,6 +41,11 @@ export const CASES = {
       {
         type: "img",
         src: "/images/projects/lms/quiz-ans.png",
+        alt: "Course authoring",
+      },
+      {
+        type: "img",
+        src: "/images/projects/lms/video.png",
         alt: "Course authoring",
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
