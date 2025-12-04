@@ -65,7 +65,7 @@ export const CASES = {
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
     ],
-    related: ["fairwheels", "mesteral", "habittracker"],
+    related: ["fairwheels", "Misteral", "habittracker"],
   },
 
   fairwheels: {
@@ -140,14 +140,14 @@ export const CASES = {
         alt: "Sell your car",
       },
     ],
-    related: ["mymap", "mesteral", "Aklemy"],
+    related: ["mymap", "Misteral", "Aklemy"],
   },
 
-  mesteral: {
+  Misteral: {
     title: "MISTERAL",
     subtitle: "Pharma website & product catalog (MENA/CIS)",
     overview:
-      "A clean, fast portfolio build showcasing Mesteral’s services, product lines, regional footprint, and lead-gen paths.",
+      "A clean, fast portfolio build showcasing Misteral’s services, product lines, regional footprint, and lead-gen paths.",
     goals: [
       "Build brand trust with clear story & stats",
       "Drive partner inquiries with focused CTAs",
@@ -165,21 +165,21 @@ export const CASES = {
     gallery: [
       {
         type: "img",
-        src: "/images/projects/mesteral/home.png",
+        src: "/images/projects/Misteral/home.png",
         alt: "home page",
       },
       {
         type: "img",
-        src: "/images/projects/mesteral/news.png",
+        src: "/images/projects/Misteral/news.png",
         alt: "news page",
       },
       {
         type: "img",
-        src: "/images/projects/mesteral/products.png",
+        src: "/images/projects/Misteral/products.png",
         alt: "news page",
       },
     ],
-    related: ["Aklemy", "fairwheels", "mesteral"],
+    related: ["Aklemy", "fairwheels", "Misteral"],
   },
 
   habittracker: {
@@ -226,7 +226,7 @@ export const CASES = {
         alt: "Register",
       },
     ],
-    related: ["Aklemy", "fairwheels", "mesteral"],
+    related: ["Aklemy", "fairwheels", "Misteral"],
   },
 
   mymap: {
@@ -262,7 +262,7 @@ export const CASES = {
         alt: "Workout list and details",
       },
     ],
-    related: ["habittracker", "mesteral", "Aklemy"],
+    related: ["habittracker", "Misteral", "Aklemy"],
   },
   schedulepro: {
     title: "SchedulePro",
@@ -274,6 +274,6 @@ export const CASES = {
       { type: "img", src: "/images/case-sched-1.jpg", alt: "Scheduler" },
       { type: "img", src: "/images/case-sched-2.jpg", alt: "Utilization" },
     ],
-    related: ["mesteral", "shopswift", "Aklemy"],
+    related: ["Misteral", "shopswift", "Aklemy"],
   },
 };
