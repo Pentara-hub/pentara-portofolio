@@ -137,7 +137,8 @@ const Portfolio = () => {
                 Misteral
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                Business intelligence dashboard with real-time analytics.
+                A modern pharmaceutical website redesigned for a cleaner, more
+                trusted brand experience.{" "}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
