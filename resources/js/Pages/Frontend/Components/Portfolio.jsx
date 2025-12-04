@@ -114,10 +114,10 @@ const Portfolio = () => {
             </div>
           </Link>
 
-          {/* mesteral */}
+          {/* misteral */}
           <Link
-            to="/case-study/mesteral"
-            aria-label="Open case study: mesteral"
+            to="/case-study/misteral"
+            aria-label="Open case study: misteral"
             className="group block rounded-2xl overflow-hidden
                        ring-1 ring-slate-200 dark:ring-slate-800
                        bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
@@ -134,7 +134,7 @@ const Portfolio = () => {
             </div>
             <div className="p-6 bg-white dark:bg-transparent">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                Mesteral
+                Misteral
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
                 Business intelligence dashboard with real-time analytics.

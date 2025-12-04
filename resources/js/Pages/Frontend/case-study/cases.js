@@ -65,7 +65,7 @@ export const CASES = {
       },
       // { type: "video", src: "https://www.youtube.com/embed/xyz?rel=0", title: "Demo" },
     ],
-    related: ["fairwheels", "Misteral", "habittracker"],
+    related: ["fairwheels", "misteral", "habittracker"],
   },
 
   fairwheels: {
@@ -140,10 +140,10 @@ export const CASES = {
         alt: "Sell your car",
       },
     ],
-    related: ["mymap", "Misteral", "Aklemy"],
+    related: ["mymap", "misteral", "Aklemy"],
   },
 
-  Misteral: {
+  misteral: {
     title: "MISTERAL",
     subtitle: "Pharma website & product catalog (MENA/CIS)",
     overview:
@@ -165,17 +165,17 @@ export const CASES = {
     gallery: [
       {
         type: "img",
-        src: "/images/projects/Misteral/home.png",
+        src: "/images/projects/misteral/home.png",
         alt: "home page",
       },
       {
         type: "img",
-        src: "/images/projects/Misteral/news.png",
+        src: "/images/projects/misteral/news.png",
         alt: "news page",
       },
       {
         type: "img",
-        src: "/images/projects/Misteral/products.png",
+        src: "/images/projects/misteral/products.png",
         alt: "news page",
       },
     ],
@@ -262,7 +262,7 @@ export const CASES = {
         alt: "Workout list and details",
       },
     ],
-    related: ["habittracker", "Misteral", "Aklemy"],
+    related: ["habittracker", "misteral", "Aklemy"],
   },
   schedulepro: {
     title: "SchedulePro",
