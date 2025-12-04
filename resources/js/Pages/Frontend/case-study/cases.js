@@ -144,7 +144,7 @@ export const CASES = {
   },
 
   mesteral: {
-    title: "MESTERAL",
+    title: "MISTERAL",
     subtitle: "Pharma website & product catalog (MENA/CIS)",
     overview:
       "A clean, fast portfolio build showcasing Mesteral’s services, product lines, regional footprint, and lead-gen paths.",
