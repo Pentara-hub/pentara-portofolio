@@ -47,7 +47,7 @@ export default function EngagementModes({ activeId, onSelect }) {
           Every mode is a real engagement model — with a timeline, a team, and a track record. Tell us where you are, and we'll match you to how we actually work.
         </p>
 
-        <div className="mt-10 scroll-row scroll-row--lg-wrap reveal-up-delay-2" role="tablist">
+        <div className="mt-12 lg:mt-14 scroll-row scroll-row--lg-wrap reveal-up-delay-2" role="tablist">
           {ENGAGEMENT_MODES.map((m, i) => (
             <button key={m.id} role="tab" aria-selected={mode.id === m.id} onClick={() => selectMode(i)}
               className={`mode-pill shrink-0 w-[9.5rem] lg:shrink lg:flex-1 lg:min-w-[8.5rem] lg:w-auto ${mode.id === m.id ? "active" : ""}`}>
