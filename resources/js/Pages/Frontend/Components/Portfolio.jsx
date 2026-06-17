@@ -1,317 +1,89 @@
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import Section from "../../../components/ui/Section";
+import SectionHeader from "../../../components/ui/SectionHeader";
+import Badge from "../../../components/ui/Badge";
+import Button from "../../../components/ui/Button";
 
-const Portfolio = () => {
+const projects = [
+  {
+    slug: "Aklemy",
+    title: "Aklemy",
+    label: "Web, Mobile & LMS",
+    desc: "Enterprise learning platform with smart quizzes, analytics, and AI chatbot support.",
+    image: "/images/projects/lms/home.png",
+    products: 5,
+    tags: ["React", "Laravel", "AWS"],
+  },
+  {
+    slug: "fairwheels",
+    title: "FairWheels",
+    label: "Web & AI",
+    desc: "AI-powered automotive commerce with price prediction and vehicle comparison.",
+    image: null,
+    icon: "fa-car",
+    products: 2,
+    tags: ["React", "Laravel"],
+    live: true,
+  },
+  {
+    slug: "misteral",
+    title: "Misteral",
+    label: "Web & Brand",
+    desc: "Pharmaceutical brand platform with product catalog and news publishing.",
+    image: "/images/projects/misteral/home.png",
+    products: 3,
+    tags: ["Vue", "Python"],
+  },
+];
+
+export default function Portfolio() {
   return (
-    <section
-      id="work"
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Our Previous Work
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Explore our recent projects and see how we've helped businesses
-            grow.
-          </p>
-        </div>
+    <Section id="work">
+      <SectionHeader
+        eyebrow="Portfolio"
+        title="Featured Projects"
+        description="Click any project to explore the full case study."
+        action={<Button href="#work" variant="secondary" size="sm" className="shrink-0 hidden md:inline-flex">View All Projects</Button>}
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Aklemy */}
-          <Link
-            to="/case-study/Aklemy"
-            aria-label="Open case study: Aklemy"
-            className="group block rounded-2xl overflow-hidden
-                       ring-1 ring-slate-200 dark:ring-slate-800
-                       bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-                       hover:-translate-y-1 transition-all duration-300
-                       shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-                       hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-                       fade-in focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-          >
-            <div className="h-40 bg-gradient-to-r from-blue-500 to-accent grid place-items-center">
-              <i
-                className="fas fa-graduation-cap text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                Aklemy
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                A comprehensive learning management system for professional
-                training.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  React
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Laravel
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  AWS
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Inertia
-                </span>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px] transition-transform group-hover:translate-x-0.5" />
-              </div>
-            </div>
-          </Link>
+      <div className="space-y-6">
+        {projects.map((p, i) => (
+          <ProjectCard key={p.title} p={p} delay={i} />
+        ))}
+      </div>
+    </Section>
+  );
+}
 
-          {/* ShopSwift */}
-          <Link
-            to="/case-study/fairwheels"
-            aria-label="Open case study: Fairwheels"
-            className="group block rounded-2xl overflow-hidden
-                       ring-1 ring-slate-200 dark:ring-slate-800
-                       bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-                       hover:-translate-y-1 transition-all duration-300
-                       shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-                       hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-                       fade-in-delay-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-          >
-            <div className="h-40 bg-gradient-to-r from-purple-500 to-pink-500 grid place-items-center">
-              <i
-                className="fas fa-car text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                FairWheels{" "}
-                <span className="ml-2 px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100">
-                  In Progress
-                </span>
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                High-performance e-commerce platform with AI recommendations.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  React
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Inertia
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Laravel
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  MySql
-                </span>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px] transition-transform group-hover:translate-x-0.5" />
-              </div>
-            </div>
-          </Link>
-
-          {/* misteral */}
-          <Link
-            to="/case-study/misteral"
-            aria-label="Open case study: misteral"
-            className="group block rounded-2xl overflow-hidden
-                       ring-1 ring-slate-200 dark:ring-slate-800
-                       bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-                       hover:-translate-y-1 transition-all duration-300
-                       shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-                       hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-                       fade-in-delay-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-          >
-            <div className="h-40 bg-gradient-to-r from-green-500 to-teal-400 grid place-items-center">
-              <i
-                className="fas fa-notes-medical text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                Misteral
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                A modern pharmaceutical website redesigned for a cleaner, more
-                trusted brand experience.{" "}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Vue.js
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Python
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Docker
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Node.js
-                </span>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px] transition-transform group-hover:translate-x-0.5" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Habit Tracker */}
-          <Link
-            to="/case-study/habittracker"
-            aria-label="Open case study:habit-tracker"
-            className="group block rounded-2xl overflow-hidden
-                       ring-1 ring-slate-200 dark:ring-slate-800
-                       bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-                       hover:-translate-y-1 transition-all duration-300
-                       shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-                       hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-                       fade-in focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-          >
-            <div className="h-40 bg-gradient-to-r from-orange-500 to-yellow-400 grid place-items-center">
-              <i
-                className="fas fa-calendar-check text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                Habit Tracker{" "}
-                <span className="ml-2 px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100">
-                  In Progress
-                </span>
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                Daily habit manager with progress heatmaps and offline support.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Flutter
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Hive
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Firebase
-                </span>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px] transition-transform group-hover:translate-x-0.5" />
-              </div>
-            </div>
-          </Link>
-
-          {/* MyMap */}
-          <Link
-            to="/case-study/mymap"
-            aria-label="Open case study: MyMap"
-            className="group block rounded-2xl overflow-hidden
-                       ring-1 ring-slate-200 dark:ring-slate-800
-                       bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-                       hover:-translate-y-1 transition-all duration-300
-                       shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-                       hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-                       fade-in-delay-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-          >
-            <div className="h-40 bg-gradient-to-r from-red-500 to-pink-500 grid place-items-center">
-              <i
-                className="fas fa-map-marker-alt text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                MyMap{" "}
-                <span className="ml-2 px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100">
-                  In Progress
-                </span>
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                Workout tracker with maps. Log workouts and view them on an
-                interactive map.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  JavaScript
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Leaflet.js
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  LocalStorage
-                </span>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400">
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px] transition-transform group-hover:translate-x-0.5" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Cleora */}
-          <div
-            aria-label="Case study disabled"
-            className="group block rounded-2xl overflow-hidden
-             ring-1 ring-slate-200 dark:ring-slate-800
-             bg-white/80 dark:bg-[#1E2A3B] backdrop-blur
-             hover:-translate-y-1 transition-all duration-300
-             shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]
-             hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]
-             fade-in-delay-2 focus:outline-none"
-          >
-            <div className="h-40 bg-gradient-to-r from-indigo-500 to-blue-400 grid place-items-center">
-              <i
-                className="fas fa-store text-white text-5xl"
-                aria-hidden="true"
-              />
-            </div>
-
-            <div className="p-6 bg-white dark:bg-transparent">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                Celora{" "}
-                <span className="ml-2 px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100">
-                  In Progress
-                </span>
-              </h3>
-
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600 dark:text-slate-300">
-                E-commerce platform for selling premium threads.{" "}
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Inretia
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Go
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  Kubernetes
-                </span>
-                <span className="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-blue-900/30 dark:text-blue-100 dark:ring-blue-800/40">
-                  PHP
-                </span>
-              </div>
-
-              <button
-                onClick={() => toast.error("Case study is not available yet!")}
-                className="mt-5 inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400 cursor-not-allowed opacity-50"
-              >
-                <span>View case study</span>
-                <i className="fas fa-arrow-right text-[13px]" />
-              </button>
-            </div>
+function ProjectCard({ p, delay }) {
+  const inner = (
+    <div className={`project-card reveal-up${delay ? `-delay-${delay}` : ""}`}>
+      <div className="grid md:grid-cols-2 gap-0">
+        <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+          <Badge variant="count">{p.products} Products</Badge>
+          <p className="text-xs font-bold tracking-[0.15em] uppercase text-accent mt-4">{p.label}</p>
+          <h3 className="text-3xl md:text-4xl font-extrabold text-fg mt-2">{p.title}</h3>
+          <p className="text-muted mt-4 leading-relaxed">{p.desc}</p>
+          <div className="flex flex-wrap gap-2 mt-5">
+            {p.tags.map((t) => <Badge key={t}>{t}</Badge>)}
           </div>
+          {p.live && <Badge variant="progress" className="mt-4 w-fit">In Progress</Badge>}
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.04] to-white/[0.01] min-h-[280px] md:min-h-[360px] flex items-center justify-center order-1 md:order-2 overflow-hidden">
+          {p.image ? (
+            <img src={p.image} alt={p.title} className="max-h-[320px] w-auto object-contain drop-shadow-2xl" />
+          ) : (
+            <i className={`fas ${p.icon} text-7xl text-accent/30`} />
+          )}
         </div>
       </div>
-    </section>
+      <div className="px-8 py-4 border-t border-white/[0.06] flex items-center justify-between bg-black/20">
+        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-dim">Explore Case Study</span>
+        <span className="arrow-btn"><i className="fas fa-arrow-right text-xs" /></span>
+      </div>
+    </div>
   );
-};
 
-export default Portfolio;
+  return <Link to={`/case-study/${p.slug}`} className="block group">{inner}</Link>;
+}

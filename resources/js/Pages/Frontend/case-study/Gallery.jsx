@@ -120,7 +120,7 @@ function Gallery({
     <div ref={containerRef} className="w-full">
       {/* Wrapper: transparent background, no fills */}
       <div
-        className="group relative rounded-2xl overflow-hidden border border-slate-200/60 dark:border-slate-700 bg-transparent"
+        className="group relative rounded-4xl overflow-hidden border border-white/[0.06] bg-transparent"
         onMouseEnter={() => {
           setUiHover(true);
           if (hasHover) mainRef.current?.autoplay?.stop();
@@ -145,7 +145,7 @@ function Gallery({
         <button
           onClick={() => mainRef.current?.slidePrev()}
           className={`absolute left-3 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full
-                bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
+                bg-surface/90 border border-white/[0.08]
                 backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
                 ${showArrows ? "opacity-100" : "opacity-0"}`}
           aria-label="Previous"
@@ -156,7 +156,7 @@ function Gallery({
         <button
           onClick={() => mainRef.current?.slideNext()}
           className={`absolute right-3 top-1/2 -translate-y-1/2 z-30 grid place-items-center w-10 h-10 rounded-full
-                bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700
+                bg-surface/90 border border-white/[0.08]
                 backdrop-blur-sm transition-opacity duration-200 hover:scale-105 focus:outline-none
                 ${showArrows ? "opacity-100" : "opacity-0"}`}
           aria-label="Next"
@@ -270,8 +270,8 @@ function Gallery({
               className={`relative w-28 h-16 rounded-xl overflow-hidden border transition 
                   ${
                     idx === current
-                      ? "ring-2 ring-primary opacity-100 border-slate-300 dark:border-slate-600"
-                      : "opacity-80 hover:opacity-100 border-slate-200/70 dark:border-slate-700"
+                      ? "ring-2 ring-accent opacity-100 border-accent/30"
+                      : "opacity-70 hover:opacity-100 border-white/10"
                   }`}
               aria-label={`Thumbnail ${idx + 1}`}
               title={it.title || it.caption || `Media ${idx + 1}`}

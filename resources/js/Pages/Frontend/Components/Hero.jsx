@@ -1,100 +1,72 @@
-import Orbit from "./Orbit";
-import { useState, useEffect } from "react";
+import Button from "../../../components/ui/Button";
+import { ENGAGEMENT_MODES } from "../../../data/pentaraData";
+import EngagementPanel from "./EngagementPanel";
+import ScrollIndicator from "./ScrollIndicator";
 
-const TypingText = ({ text, speed = 200, start = true, onComplete }) => {
-  const [index, setIndex] = useState(0);
-  const [displayed, setDisplayed] = useState("");
+const COLORS = { m1: "#00E8FF", m2: "#A78BFA", m3: "#FB923C", y: "#F472B6", p: "#60A5FA" };
 
-  useEffect(() => {
-    if (!start) return;
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayed((prev) => prev + text.charAt(index));
-        setIndex(index + 1);
-      }, speed);
-      return () => clearTimeout(timeout);
-    } else if (onComplete) {
-      onComplete();
-    }
-  }, [index, text, speed, start]);
-
-  return <span>{displayed}</span>;
-};
-
-export default function Hero() {
-  const [firstDone, setFirstDone] = useState(false);
-  const [secondDone, setSecondDone] = useState(false);
+export default function Hero({ onModeClick, activeMode }) {
+  const handleMode = (id) => {
+    onModeClick?.(id);
+    document.getElementById("engagement-modes")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div
-      className="md:pb-36 "
-      style={{
-        background:
-          "radial-gradient(1200px 600px at 80% -10%, rgba(29, 78, 216, 0.25), transparent 60%), radial-gradient(900px 500px at 10% -10%, rgba(56, 189, 248, 0.25), transparent 60%)",
-      }}
-    >
-      <section
-        id="home"
-        className="
-    pt-24
-    md:pt-40          /* ≥768px → pt-40 */
-    min-[950px]:pt-0 /* ≤950px → still pt-40 */
-    lg:pt-3          /* ≥1024px → back to pt-24 */
-    px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto
-  "
-      >
-        <div className="hero-grid grid md:grid-cols-2 items-center">
-          {/* left column (text) */}
-          <div className="hero-text space-y-6 ">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <TypingText
-                text="Build fast."
-                speed={80}
-                onComplete={() => setFirstDone(true)}
-              />
-              <br />
-              <span className="gradient-text">
-                <TypingText
-                  text="Deploy anywhere."
-                  speed={80}
-                  start={firstDone}
-                  onComplete={() => setSecondDone(true)}
-                />
-              </span>
+    <section id="home" className="hero-section relative min-h-[92vh] flex flex-col overflow-hidden">
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="container-main flex-1 flex flex-col justify-center py-16 md:py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="reveal-up">
+            <span className="badge-pill mb-8"><span className="relative z-[1]">AI-First Engineering</span></span>
+            <h1 className="text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.08] tracking-tight text-white">
+              Built Fast.<br />
+              Built Right.<br />
+              <span className="text-white/45">That's Pentara.</span>
             </h1>
-            {secondDone && (
-              <div className="opacity-0 transition-opacity  ease-in-out animate-[fadeIn_1.5s_ease-in-out_forwards] space-y-6">
-                {" "}
-                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 animate-fade-in">
-                  We design, develop, and deploy full-stack web apps and cloud
-                  infrastructure that scale.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="#contact"
-                    className="bg-primary hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-lg transition-all text-center shadow-lg"
-                  >
-                    Get a proposal
-                  </a>
-                  <a
-                    href="#work"
-                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded-lg transition-all text-center"
-                  >
-                    See our work
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
+            <p className="mt-8 text-lg text-white/60 leading-relaxed max-w-xl reveal-up-delay-1">
+              Websites and mobile apps — designed, built, and launched fast. You bring the idea, we handle everything else. Cloud solutions included when you need them. No stress, no surprises.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4 reveal-up-delay-2">
+              <Button href="#engagement-modes" size="lg" variant="neon">Pick Your Mode</Button>
+              <Button href="#philosophy" variant="secondary" size="lg">Our Philosophy</Button>
+            </div>
 
-          {/* right column (3D) — will be hidden by CSS at ≤950px */}
-          <div className="hero-orbit hidden md:block md:pl-6 lg:pl-10 xl:p-0 md:-ml-2">
-            <div className="w-full max-w-[620px] lg:max-w-[720px] xl:max-w-[820px] mx-auto">
-              <Orbit />
+            <div className="mt-14 flex flex-wrap gap-10 md:gap-16 reveal-up-delay-3">
+              {[["Web & Mobile", "Our Focus"], ["15+", "Products Delivered"], ["4–8 wks", "Idea to Live"]].map(([v, l]) => (
+                <div key={l} className="stat-bracket">
+                  <span className="bracket-tr" aria-hidden="true" />
+                  <span className="bracket-bl" aria-hidden="true" />
+                  <p className="text-4xl md:text-5xl font-extrabold text-white px-2 neon-text">{v}</p>
+                  <p className="text-xs text-white/40 mt-2 uppercase tracking-widest">{l}</p>
+                </div>
+              ))}
             </div>
           </div>
+
+          <div className="reveal-up-delay-2 relative">
+            <EngagementPanel onSelect={handleMode} activeId={activeMode} />
+          </div>
         </div>
-      </section>
-    </div>
+
+        {/* Mobile mode pills */}
+        <div className="mt-12 lg:hidden reveal-up-delay-3">
+          <p className="section-eyebrow mb-4 text-neon">Engagement Modes</p>
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {ENGAGEMENT_MODES.map((m) => (
+              <button key={m.id} type="button" onClick={() => handleMode(m.id)} className="mode-pill shrink-0"
+                style={{ "--mode-color": COLORS[m.id] }}>
+                <span className="text-lg font-extrabold" style={{ color: COLORS[m.id] }}>{m.code}</span>
+                <span className="text-sm font-semibold text-white mt-1">{m.label}</span>
+                <span className="text-xs text-white/40 mt-0.5">{m.subtitle}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 pb-8 flex justify-center">
+        <ScrollIndicator />
+      </div>
+    </section>
   );
 }

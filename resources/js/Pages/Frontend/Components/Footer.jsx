@@ -1,90 +1,54 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center mb-4">
-              <div className="flex-shrink-0 flex items-center">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src="/images/logo.png" alt="Pentara logo" />
-                </div>
-              </div>
-              <span className="text-xl font-semibold ml-3 mt-1">Pentara</span>
-            </div>
-            <p className="text-slate-300 mb-6">
-              We design, develop, and deploy full-stack web apps and cloud
-              infrastructure that scale.
+    <footer className="border-t border-white/[0.08] bg-brand py-16">
+      <div className="container-main">
+        <div className="grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5">
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img src="/images/logo.png" alt="Pentara" className="w-10 h-10" />
+              <span className="font-bold text-white text-lg">Pentara</span>
+            </Link>
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+              A web and mobile engineering studio — you bring the idea, we design, build, and launch. Fast, reliable, and worry-free. Based in Cairo, delivering worldwide.
             </p>
-            <div className="flex space-x-4">
-              <Link
-                to="/#home"
-                className="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition-all"
-                aria-label="Home"
-              >
-                <i className="fab fa-dribbble" />
-              </Link>
-              <a
-                href="https://www.instagram.com/pentara_5/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition-all"
-                aria-label="Instagram"
-              >
-                <i className="fab fa-instagram" />
-              </a>
+            <div className="flex gap-3 mt-6">
+              <a href="https://www.instagram.com/pentara_5/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:-translate-y-0.5 transition-all"><i className="fab fa-instagram" /></a>
+              <a href="mailto:pentarahub@gmail.com" className="w-10 h-10 rounded-lg border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:-translate-y-0.5 transition-all"><i className="fas fa-envelope" /></a>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                ["Home", "home"],
-                ["Services", "services"],
-                ["Work", "work"],
-                ["Process", "process"],
-                ["About", "about"],
-                ["Contact", "contact"],
-              ].map(([label, hash]) => (
-                <li key={hash}>
-                  <Link
-                    to={`/#${hash}`}
-                    className="text-slate-300 hover:text-white transition-all"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              {["Web Development", "Cloud & DevOps", "API Development"].map(
-                (s) => (
-                  <li key={s}>
-                    <Link
-                      to="/#services"
-                      className="text-slate-300 hover:text-white transition-all"
-                    >
-                      {s}
-                    </Link>
-                  </li>
-                )
-              )}
-            </ul>
+          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-white/50">
+                {["Web Development", "Cloud & DevOps", "Mobile", "UI/UX", "QA"].map((s) => (
+                  <li key={s}><a href="#what-we-build" className="hover:text-white transition-colors">{s}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-white/50">
+                {[{ l: "How We Build", h: "how-we-build" }, { l: "Work", h: "work" }, { l: "Team", h: "team" }, { l: "Contact", h: "contact" }].map((i) => (
+                  <li key={i.h}><a href={`#${i.h}`} className="hover:text-white transition-colors">{i.l}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-white/50">
+                <li><a href="mailto:pentarahub@gmail.com" className="hover:text-white">pentarahub@gmail.com</a></li>
+                <li>Cairo, Egypt</li>
+                <li>Remote worldwide</li>
+              </ul>
+            </div>
           </div>
         </div>
-
-        <div className="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-slate-400 mb-4 md:mb-0">
-            © 2025 Pentara-Hub. All rights reserved.
-          </p>
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/40">
+          <p>© {new Date().getFullYear()} Pentara. All rights reserved.</p>
+          <p>Built fast. Built right. Built to last.</p>
         </div>
       </div>
     </footer>

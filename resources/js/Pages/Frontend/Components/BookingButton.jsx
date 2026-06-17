@@ -1,34 +1,22 @@
 import { useState } from "react";
+import Button from "../../../components/ui/Button";
 
 export default function BookingButton() {
   const [open, setOpen] = useState(false);
-
   if (open) {
     return (
-      <div className="w-full h-[85vh] rounded-xl overflow-hidden border border-white/20">
-        <div className="flex justify-end p-2 bg-white/10">
-          <button
-            onClick={() => setOpen(false)}
-            className="text-gray-600 hover:text-black text-sm bg-red-300 px-2 rounded-full"
-          >
-            ✕ Close
-          </button>
+      <div className="w-full h-[75vh] rounded-xl overflow-hidden border border-white/10 bg-brand">
+        <div className="flex justify-between items-center px-5 py-3 border-b border-white/10">
+          <span className="text-sm text-white font-semibold">Schedule a Call</span>
+          <button onClick={() => setOpen(false)} className="text-xs text-white/50 hover:text-white px-3 py-1.5 rounded-lg border border-white/10">Close</button>
         </div>
-        <iframe
-          src="https://calendar.app.google/z6Q24T9sDokt6HZz6"
-          title="Google Booking"
-          className="w-full h-full border-0 bg-white sm:m-0"
-        />
+        <iframe src="https://calendar.app.google/z6Q24T9sDokt6HZz6" title="Booking" className="w-full h-[calc(100%-3rem)] border-0 bg-white" />
       </div>
     );
   }
-
   return (
-    <button
-      onClick={() => setOpen(true)}
-      className="w-full inline-flex items-center justify-center font-medium py-3 px-6 rounded-lg transition-all bg-accent hover:bg-opacity-90 text-dark"
-    >
-      <i className="fas fa-calendar-alt mr-2" /> Book a Call
-    </button>
+    <Button variant="secondary" size="md" className="w-full" onClick={() => setOpen(true)}>
+      <i className="fas fa-calendar-alt" /> Book a Call
+    </Button>
   );
 }

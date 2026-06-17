@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
     subject = "Website inquiry",
     message = "",
     company = "",
-    budget = "",
     projectType = "",
     otherProjectType = "",
   } = req.body || {};
@@ -29,10 +28,6 @@ module.exports = async (req, res) => {
     return res
       .status(400)
       .json({ success: false, message: "A valid email address is required." });
-  if (!budget.trim())
-    return res
-      .status(400)
-      .json({ success: false, message: "Please select your budget range." });
   if (!message.trim())
     return res.status(400).json({
       success: false,
@@ -61,7 +56,6 @@ Name: ${name}
 Email: ${email}
 Company: ${company || "—"}
 Project Type: ${displayType || "—"}
-Budget: ${budget || "—"}
 Subject: ${subject}
 
 Message:
@@ -74,7 +68,6 @@ ${message}
 <p><strong>Email:</strong> ${email}</p>
 <p><strong>Company:</strong> ${company || "—"}</p>
 <p><strong>Project Type:</strong> ${displayType || "—"}</p>
-<p><strong>Budget:</strong> ${budget || "—"}</p>
 <p><strong>Subject:</strong> ${subject}</p>
 <hr>
 <p><strong>Message:</strong></p>

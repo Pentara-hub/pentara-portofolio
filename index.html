@@ -1,101 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="public/images/logo.png" />
-
-    <title>Pentara | Full-Stack Web Development & Cloud Solutions</title>
-    <meta
-      name="description"
-      content="We design, develop, and deploy full-stack web apps and cloud infrastructure that scale."
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer@1.10.48/build/spline-viewer.js"
-    ></script>
-
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#1D4ED8",
-              dark: "#0B1021",
-              accent: "#38BDF8",
-              background: {
-                dark: "#0F172A",
-                light: "#F8FAFC",
-              },
-            },
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <title>Pentara | Full-Stack Engineering Studio</title>
+    <meta name="description" content="Built fast. Built right. Built to last. Full-stack web apps and cloud infrastructure." />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
-  <body
-    class="bg-background-light dark:bg-background-dark font-sans text-slate-800 dark:text-slate-200 transition-colors duration-300"
-  >
+  <body class="triangle-bg font-sans antialiased">
     <div id="root"></div>
-    <!-- Navigation -->
-
-    <!-- Hero Section -->
-
-    <!-- Services Section -->
-
-    <!-- Use Cases Section -->
-
-    <!-- Portfolio Section -->
-
-    <!-- Process Section -->
-
-    <!-- About Section -->
-
-    <!-- Our Team Section -->
-
-    <!-- Testimonials Section -->
-
-    <!-- Contact Section -->
-
-    <!-- Footer -->
-
-    <!-- <script>
-      // Fade in elements when they come into view
-      function checkVisibility() {
-        const elements = document.querySelectorAll(
-          ".fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3"
-        );
-
-        elements.forEach((el) => {
-          const rect = el.getBoundingClientRect();
-          const isVisible =
-            rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0;
-
-          if (isVisible) {
-            el.style.animationPlayState = "running";
-          }
-        });
-      }
-
-      // Check visibility on scroll and load
-      window.addEventListener("scroll", checkVisibility);
-      window.addEventListener("load", checkVisibility);
-    </script> -->
-    <script src="assets/js/main.js"></script>
     <script type="module" src="/resources/main.jsx"></script>
   </body>
 </html>

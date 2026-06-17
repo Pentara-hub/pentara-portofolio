@@ -11,7 +11,7 @@ import { useEffect } from "react";
  *  - rootMargin: IO rootMargin (default "0px 0px -20% 0px")
  */
 export default function useRevealOnScroll(
-  selector = ".fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3",
+  selector = ".fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3, .reveal-up, .reveal-up-delay-1, .reveal-up-delay-2, .reveal-up-delay-3, .rise, .rise-d1, .rise-d2, .rise-d3",
   { once = true, threshold = 0.1, rootMargin = "0px 0px -20% 0px" } = {}
 ) {
   useEffect(() => {

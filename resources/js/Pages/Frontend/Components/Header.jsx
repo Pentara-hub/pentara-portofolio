@@ -1,122 +1,74 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import Switch from "./Switch";
+import Button from "../../../components/ui/Button";
 
-const navItems = [
-  { label: "Home", hash: "home" },
-  { label: "Services", hash: "services" },
+const nav = [
+  { label: "How We Build", hash: "how-we-build" },
+  { label: "What We Build", hash: "what-we-build" },
   { label: "Work", hash: "work" },
-  { label: "Process", hash: "process" },
-  { label: "About", hash: "about" },
   { label: "Team", hash: "team" },
   { label: "Contact", hash: "contact" },
 ];
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [theme, setTheme] = React.useState(
-    () =>
-      (typeof window !== "undefined" && localStorage.getItem("theme")) || "dark"
-  );
-  const [scrolled, setScrolled] = React.useState(false);
+export default function Header({ onContact }) {
+  const [open, setOpen] = React.useState(false);
   const location = useLocation();
 
-  // theme
+  React.useEffect(() => { setOpen(false); }, [location.pathname, location.hash]);
   React.useEffect(() => {
-    const html = document.documentElement;
-    if (theme === "dark") html.classList.add("dark");
-    else html.classList.remove("dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  // close mobile on route/hash change
-  React.useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname, location.hash]);
-
-  // sticky look on scroll
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   return (
-    <nav
-      className={[
-        "fixed w-full z-40 backdrop-blur-md transition-all duration-300",
-        scrolled
-          ? "bg-white/90 dark:bg-slate-900/90 shadow-sm"
-          : "bg-white/60 dark:bg-slate-900/60",
-      ].join(" ")}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`flex justify-between items-center transition-all duration-300 ${
-            scrolled ? "h-14" : "h-16"
-          }`}
-        >
-          {/* Brand */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
-              <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center">
-                <img src="/images/logo.png" alt="Pentara logo" />
+    <>
+      <div className="bg-brand/80 border-b border-white/10 text-center py-2 text-xs">
+        <span className="text-white/90">
+          <strong className="text-white">Pentara</strong> — Web & mobile engineering · You bring the idea, we handle the rest ·{" "}
+          <a href="#contact" className="underline hover:text-white transition-colors">Book a free consultation →</a>
+        </span>
+      </div>
+
+      <header className="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/[0.06]">
+        <div className="container-main">
+          <div className="flex items-center justify-between h-[4.5rem]">
+            <Link to="/" className="flex items-center gap-3 shrink-0 group">
+              <img src="/images/logo.png" alt="Pentara" className="w-9 h-9 transition-transform group-hover:scale-110" />
+              <div className="hidden sm:block">
+                <span className="font-bold text-white text-sm block">Pentara</span>
+                <span className="text-[10px] text-white/50">Built fast. Built right. Built to last.</span>
               </div>
-              <span className="text-xl font-semibold ml-2 mt-1">Pentara</span>
             </Link>
-          </div>
 
-          {/* Desktop nav */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-4">
-              {navItems.map((n) => (
-                <Link
-                  key={n.hash}
-                  to={`/#${n.hash}`}
-                  className="px-3 py-2 rounded-md text-sm font-medium hover:text-primary transition-colors"
-                >
+            <nav className="hidden lg:flex items-center gap-1">
+              {nav.map((n) => (
+                <a key={n.hash} href={`#${n.hash}`} className="px-4 py-2 text-sm text-white/60 hover:text-white transition-colors hover:-translate-y-0.5 duration-200">
                   {n.label}
-                </Link>
+                </a>
               ))}
-              <Switch />
-            </div>
-          </div>
+            </nav>
 
-          {/* Mobile trigger */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setMobileOpen((o) => !o)}
-              className="p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-              aria-label="Toggle mobile menu"
-            >
-              <i className="fas fa-bars" />
+            <div className="hidden lg:block">
+              <Button variant="neon" size="sm" onClick={onContact}>Book a Free Consultation</Button>
+            </div>
+
+            <button onClick={() => setOpen((o) => !o)} className="lg:hidden w-11 h-11 rounded-xl border border-white/20 flex items-center justify-center text-white" aria-label="Menu">
+              <i className={`fas ${open ? "fa-times" : "fa-bars"} text-sm`} />
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 shadow-lg transition-all duration-200">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((n) => (
-              <Link
-                key={n.hash}
-                to={`/#${n.hash}`}
-                className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors"
-              >
-                {n.label}
-              </Link>
+      {open && (
+        <div className="fixed inset-0 z-40 lg:hidden bg-brand-dark/98 pt-28 px-5">
+          <div className="space-y-2">
+            {nav.map((n) => (
+              <a key={n.hash} href={`#${n.hash}`} onClick={() => setOpen(false)} className="block px-4 py-3 rounded-xl text-white/70 hover:text-white font-medium text-lg">{n.label}</a>
             ))}
-            <div className="pt-4 ">
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-700 px-3 pb-4">
-                <Switch />
-              </div>
-            </div>
+            <Button className="w-full mt-4" variant="neon" onClick={() => { setOpen(false); onContact?.(); }}>Book a Free Consultation</Button>
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
