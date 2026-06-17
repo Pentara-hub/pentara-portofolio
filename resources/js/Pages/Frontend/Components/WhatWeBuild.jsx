@@ -16,7 +16,7 @@ export default function WhatWeBuild() {
         </p>
         <p className="mt-2 text-sm text-white/30 reveal-up-delay-1">Click a cluster to explore</p>
 
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4 reveal-up-delay-2">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 reveal-up-delay-2">
           {SERVICE_CLUSTERS.map((c) => (
             <button key={c.id} type="button" onClick={() => setActive(c)}
               onMouseEnter={() => setHovered(c.id)} onMouseLeave={() => setHovered(null)}

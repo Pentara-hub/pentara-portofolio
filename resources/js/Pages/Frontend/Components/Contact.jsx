@@ -53,9 +53,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 border-t border-white/[0.06]">
-      <div className="container-main">
-        <div className="grid lg:grid-cols-2 gap-12">
+    <section id="contact" className="py-20 md:py-28 border-t border-white/[0.06] overflow-x-clip">
+      <div className="container-main min-w-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 min-w-0">
           <div className="reveal-up">
             <p className="section-eyebrow">Contact Us</p>
             <h2 className="section-title">Let's Talk About<br /><em>What You're Building.</em></h2>
@@ -80,7 +80,7 @@ export default function Contact() {
               onMouseLeave={onLeave}
               onMouseEnter={onEnter}
               onSubmit={submit}
-              className="contact-form-panel p-8 space-y-5"
+              className="contact-form-panel p-5 sm:p-8 space-y-5"
             >
               <h3 className="text-xl font-bold text-white mb-2 relative z-[1]">Send a message</h3>
               <div className="grid sm:grid-cols-2 gap-4 relative z-[1]">

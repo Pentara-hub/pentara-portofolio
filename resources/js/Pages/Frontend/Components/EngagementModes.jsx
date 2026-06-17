@@ -40,17 +40,17 @@ export default function EngagementModes({ activeId, onSelect }) {
 
   return (
     <section id="engagement-modes" className="py-20 md:py-28">
-      <div className="container-main">
+      <div className="container-main min-w-0">
         <p className="section-eyebrow reveal-up">Engagement Modes</p>
         <h2 className="section-title reveal-up">Pick Your Mode.</h2>
         <p className="mt-4 text-white/60 max-w-2xl reveal-up-delay-1">
           Every mode is a real engagement model — with a timeline, a team, and a track record. Tell us where you are, and we'll match you to how we actually work.
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-2 reveal-up-delay-2" role="tablist">
+        <div className="mt-10 scroll-row scroll-row--lg-wrap reveal-up-delay-2" role="tablist">
           {ENGAGEMENT_MODES.map((m, i) => (
             <button key={m.id} role="tab" aria-selected={mode.id === m.id} onClick={() => selectMode(i)}
-              className={`mode-pill !min-w-0 flex-1 min-w-[120px] ${mode.id === m.id ? "active" : ""}`}>
+              className={`mode-pill shrink-0 w-[9.5rem] lg:shrink lg:flex-1 lg:min-w-[8.5rem] lg:w-auto ${mode.id === m.id ? "active" : ""}`}>
               <span className="font-extrabold text-white">{m.code}</span>
               <span className="text-xs text-white/70">{m.label}</span>
               <span className="text-[10px] text-white/40">{m.timeline}</span>
@@ -66,8 +66,8 @@ export default function EngagementModes({ activeId, onSelect }) {
           </div>
         </div>
 
-        <TiltCard className="mt-6 surface-card p-8 md:p-12 reveal-up" intensity={8}>
-          <h3 className="text-2xl md:text-3xl font-extrabold text-white">{mode.title}</h3>
+        <TiltCard className="mt-6 surface-card p-6 sm:p-8 md:p-12 reveal-up" intensity={8}>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug">{mode.title}</h3>
           <p className="mt-4 text-white/60 leading-relaxed max-w-2xl">{mode.desc}</p>
           <div className="flex flex-wrap gap-2 mt-6">
             {mode.tags.map((t) => <span key={t} className="px-3 py-1.5 rounded-lg bg-white/10 text-xs font-semibold text-white hover:scale-105 transition-transform">{t}</span>)}
@@ -76,7 +76,7 @@ export default function EngagementModes({ activeId, onSelect }) {
         </TiltCard>
 
         {!quizStep && (
-          <div className="mt-10 text-center surface-card p-8 reveal-up-delay-2">
+          <div className="mt-10 text-center surface-card p-6 sm:p-8 reveal-up-delay-2">
             <p className="text-white/60">Still not sure? <strong className="text-white">Answer 2 quick questions</strong> and we'll point you to the right team.</p>
             <Button className="mt-4" onClick={() => setQuizStep("start")}>Take the 2-min quiz →</Button>
           </div>
@@ -105,7 +105,7 @@ export default function EngagementModes({ activeId, onSelect }) {
           <div className="mt-10 surface-card p-8 reveal-up border-white/20">
             <h3 className="text-xl font-bold text-white">Your fit: <span className="text-white/70">{fitMode.code} {fitMode.label}</span></h3>
             <p className="text-white/60 mt-2">{fitMode.subtitle} · {fitMode.timeline}</p>
-            <div className="flex gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <Button onClick={() => { const i = ENGAGEMENT_MODES.findIndex((m) => m.id === fitMode.id); selectMode(i); setQuizStep(null); }}>Show me this mode →</Button>
               <Button variant="secondary" onClick={() => { setQuizStep(null); setQuizAnswers({}); }}>Restart quiz</Button>
             </div>

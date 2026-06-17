@@ -13,7 +13,7 @@ export default function Topology() {
       <div className="container-main">
         <p className="section-eyebrow reveal-up">Topology</p>
         <h2 className="section-title reveal-up max-w-3xl">We're Not a Team.<br /><em>We're a Topology</em> Connected by Purpose.</h2>
-        <p className="mt-4 text-4xl font-extrabold text-white reveal-up-delay-1">4 <span className="text-lg font-normal text-white/40">People</span></p>
+        <p className="mt-4 text-3xl sm:text-4xl font-extrabold text-white reveal-up-delay-1">4 <span className="text-lg font-normal text-white/40">People</span></p>
         <p className="text-white/50 mt-1 reveal-up-delay-1">Four senior engineers focused on web and mobile. You bring the idea — we design, build, launch, and support. Cloud included when you need it.</p>
 
         <div className="mt-12 grid md:grid-cols-3 gap-5 reveal-up-delay-2">

@@ -28,7 +28,7 @@ export default function HowWeBuild() {
         </p>
 
         <div className="mt-14 grid md:grid-cols-2 gap-6 items-stretch">
-          <TiltCard className="surface-card compare-bad p-8 h-full">
+          <TiltCard className="surface-card compare-bad p-6 sm:p-8 h-full">
             <p className="text-xs font-bold tracking-widest uppercase text-red-400/80 mb-2">What we aren't</p>
             <h3 className="text-2xl font-extrabold text-white mb-1">Code<br />and Hope.</h3>
             <span className="inline-block text-xs text-red-400/60 mb-6">✕ Vibe coding</span>
@@ -42,7 +42,7 @@ export default function HowWeBuild() {
             <p className="mt-8 text-sm"><span className="text-white/40">What you end up with</span> <strong className="text-red-300">A risk.</strong></p>
           </TiltCard>
 
-          <TiltCard className="surface-card compare-good p-8 h-full" intensity={14}>
+          <TiltCard className="surface-card compare-good p-6 sm:p-8 h-full" intensity={14}>
             <p className="text-xs font-bold tracking-widest uppercase text-white/50 mb-2">What we are</p>
             <h3 className="text-2xl font-extrabold text-white mb-1">Ship It<br /><em>with Precision.</em></h3>
             <span className="inline-block text-xs text-emerald-400/70 mb-6">✓ Pentara Method</span>

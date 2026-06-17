@@ -17,9 +17,9 @@ export default function ProjectsShowcase() {
 
         <TiltCard className="mt-12 surface-card overflow-hidden reveal-up-delay-2" intensity={6}>
           <div className="grid lg:grid-cols-2">
-            <div className="p-8 md:p-12 flex flex-col justify-center">
+            <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center min-w-0">
               <p className="text-xs font-bold tracking-widest uppercase text-white/40">{p.category} · {p.mode}</p>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-3">{p.title}</h3>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-3">{p.title}</h3>
               <p className="text-white/60 mt-4 leading-relaxed">{p.desc}</p>
               <Link to={`/case-study/${p.slug}`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-white hover:gap-4 transition-all">
                 Visit {p.title} <i className="fas fa-arrow-right" />
@@ -33,7 +33,7 @@ export default function ProjectsShowcase() {
               )}
             </div>
           </div>
-          <div className="px-8 py-4 border-t border-white/[0.06] flex items-center justify-between bg-black/20">
+          <div className="px-4 sm:px-8 py-4 border-t border-white/[0.06] flex items-center justify-between bg-black/20 gap-3">
             <div className="flex gap-2">
               {PROJECTS.map((_, i) => (
                 <button key={i} type="button" onClick={() => setIdx(i)} aria-label={`Project ${i + 1}`}
@@ -47,7 +47,7 @@ export default function ProjectsShowcase() {
           </div>
         </TiltCard>
 
-        <div className="mt-12 text-center surface-card p-10 reveal-up-delay-3">
+        <div className="mt-12 text-center surface-card p-6 sm:p-10 reveal-up-delay-3">
           <h3 className="text-2xl font-extrabold text-white">Your Product Could Be Next</h3>
           <p className="text-white/60 mt-3">You've seen the work. Tell us what you're building — we'll tell you honestly which mode fits and what the first 30 days look like.<br /><em className="text-white/80 not-italic">Free 30-minute</em> consultation. No pitch deck required.</p>
           <Button href="#contact" size="lg" className="mt-6">Your Product Could Be Next</Button>

@@ -18,8 +18,8 @@ export default function Testimonials() {
           <span className="text-white/40 text-sm">Across EdTech, SaaS, and enterprise builds</span>
         </div>
 
-        <TiltCard className="mt-10 surface-card p-10 md:p-14 reveal-up-delay-2" intensity={5}>
-          <p className="text-2xl md:text-3xl font-semibold text-white leading-snug">"{t.quote}"</p>
+        <TiltCard className="mt-10 surface-card p-6 sm:p-10 md:p-14 reveal-up-delay-2" intensity={5}>
+          <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white leading-snug">"{t.quote}"</p>
           <div className="mt-8 flex items-center justify-between">
             <div>
               <p className="font-bold text-white">{t.role}</p>

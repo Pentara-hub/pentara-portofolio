@@ -31,7 +31,7 @@ export default function Philosophy() {
       <div className="container-main">
         <p className="section-eyebrow reveal-up">The Philosophy</p>
         <h2 className="section-title reveal-up max-w-3xl">You Bring the Idea.<br />We Handle the Rest.</h2>
-        <p className="mt-6 text-white/60 text-lg max-w-2xl reveal-up-delay-1">
+        <p className="mt-6 text-white/60 text-base sm:text-lg max-w-2xl reveal-up-delay-1">
           Building a website or mobile app shouldn't mean managing developers, chasing deadlines, or worrying about launch day. That's our job.
         </p>
         <p className="mt-4 text-white/50 max-w-2xl reveal-up-delay-1">
@@ -39,9 +39,9 @@ export default function Philosophy() {
         </p>
 
         <p className="mt-10 text-sm text-white/40 reveal-up-delay-2">Select a role to discover their part.</p>
-        <div className="mt-4 flex gap-4 reveal-up-delay-2">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-up-delay-2">
           {Object.entries(CHARS).map(([key, ch]) => (
-            <button key={key} type="button" onClick={() => setActive(key)} className={`char-btn flex-1 max-w-xs surface-card p-6 text-left ${active === key ? "active" : ""}`}>
+            <button key={key} type="button" onClick={() => setActive(key)} className={`char-btn w-full surface-card p-5 sm:p-6 text-left ${active === key ? "active" : ""}`}>
               <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center mb-4">
                 <i className={`fas ${ch.icon} text-2xl text-white`} />
               </div>
