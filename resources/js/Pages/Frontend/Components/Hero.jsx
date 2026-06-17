@@ -31,13 +31,13 @@ export default function Hero({ onModeClick, activeMode }) {
               <Button href="#philosophy" variant="secondary" size="lg" className="w-full sm:w-auto justify-center">Our Philosophy</Button>
             </div>
 
-            <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 md:gap-16 reveal-up-delay-3">
+            <div className="mt-10 sm:mt-14 grid grid-cols-2 gap-6 sm:gap-10 md:flex md:flex-wrap md:gap-10 lg:gap-16 reveal-up-delay-3">
               {[["Web & Mobile", "Our Focus"], ["15+", "Products Delivered"], ["4–8 wks", "Idea to Live"]].map(([v, l]) => (
-                <div key={l} className="stat-bracket min-w-0">
+                <div key={l} className="stat-bracket min-w-0 md:shrink-0">
                   <span className="bracket-tr" aria-hidden="true" />
                   <span className="bracket-bl" aria-hidden="true" />
-                  <p className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white px-1 sm:px-2 neon-text break-words">{v}</p>
-                  <p className="text-[10px] sm:text-xs text-white/40 mt-2 uppercase tracking-widest leading-snug">{l}</p>
+                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white px-1 sm:px-2 md:px-2 neon-text">{v}</p>
+                  <p className="text-[10px] sm:text-xs text-white/40 mt-2 uppercase tracking-widest leading-snug md:whitespace-nowrap">{l}</p>
                 </div>
               ))}
             </div>
