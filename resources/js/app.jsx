@@ -20,7 +20,7 @@ function App() {
         toastClassName="!rounded-xl !bg-brand !border !border-white/10 !text-white !font-sans !text-sm"
         progressClassName="!bg-white"
       />
-      <ScrollToTop offset={80} />
+      <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomeWithContext />} />

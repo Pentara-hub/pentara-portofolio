@@ -1,23 +1,30 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ScrollToTop({ offset = 0 }) {
+export default function ScrollToTop() {
   const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
+    const getOffset = () => {
+      if (window.innerWidth >= 1024) {
+        return document.documentElement.classList.contains("header-scrolled") ? 72 : 108;
+      }
+      return 80;
+    };
+
     // If there's a hash, scroll to that element with an offset (for fixed header)
     if (hash) {
       const id = hash.slice(1);
       const el = document.getElementById(id);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        const y = el.getBoundingClientRect().top + window.scrollY - getOffset();
         window.scrollTo({ top: y, behavior: "smooth" });
         return;
       }
     }
     // Otherwise, just go to top on route change
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname, hash, key, offset]);
+  }, [pathname, hash, key]);
 
   return null;
 }

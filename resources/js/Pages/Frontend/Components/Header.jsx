@@ -10,8 +10,12 @@ const nav = [
   { label: "Contact", hash: "contact" },
 ];
 
+const DESKTOP_HEADER_HEIGHT = "6.75rem"; // announcement bar + nav (lg)
+const SCROLL_THRESHOLD = 24;
+
 export default function Header({ onContact }) {
   const [open, setOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
 
   React.useEffect(() => { setOpen(false); }, [location.pathname, location.hash]);
@@ -20,20 +24,40 @@ export default function Header({ onContact }) {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  React.useEffect(() => {
+    document.documentElement.classList.toggle("header-scrolled", scrolled);
+    return () => document.documentElement.classList.remove("header-scrolled");
+  }, [scrolled]);
+
   return (
     <>
-      <div className="bg-brand/80 border-b border-white/10 text-center py-2 px-3 text-xs">
-        <span className="text-white/90">
-          <strong className="text-white">Pentara</strong>
-          <span className="hidden md:inline"> — Web & mobile engineering · You bring the idea, we handle the rest · </span>
-          <span className="md:hidden"> — </span>
-          <a href="#contact" className="underline hover:text-white transition-colors whitespace-nowrap">Book a free consultation →</a>
-        </span>
-      </div>
+      <div className="lg:fixed lg:top-0 lg:inset-x-0 lg:z-50 w-full">
+        <div
+          className={`grid transition-[grid-template-rows] duration-300 ease-out ${scrolled ? "grid-rows-[0fr]" : "grid-rows-[1fr]"}`}
+          aria-hidden={scrolled}
+        >
+          <div className="overflow-hidden">
+            <div className="bg-brand/80 border-b border-white/10 text-center py-2 px-3 text-xs">
+              <span className="text-white/90">
+                <strong className="text-white">Pentara</strong>
+                <span className="hidden md:inline"> — Web & mobile engineering · You bring the idea, we handle the rest · </span>
+                <span className="md:hidden"> — </span>
+                <a href="#contact" className="underline hover:text-white transition-colors whitespace-nowrap">Book a free consultation →</a>
+              </span>
+            </div>
+          </div>
+        </div>
 
-      <header className="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="container-main">
-          <div className="flex items-center justify-between h-14 sm:h-[4.5rem] gap-3">
+        <header className="sticky top-0 lg:static z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/[0.06]">
+          <div className="container-main">
+            <div className="flex items-center justify-between h-14 sm:h-[4.5rem] gap-3">
             <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0 group">
               <img src="/images/logo.png" alt="Pentara" className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform group-hover:scale-110" />
               <div className="min-w-0">
@@ -57,9 +81,13 @@ export default function Header({ onContact }) {
             <button onClick={() => setOpen((o) => !o)} className="lg:hidden w-11 h-11 rounded-xl border border-white/20 flex items-center justify-center text-white" aria-label="Menu">
               <i className={`fas ${open ? "fa-times" : "fa-bars"} text-sm`} />
             </button>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
+
+      {/* Reserve space for fixed desktop header */}
+      <div className="hidden lg:block shrink-0" style={{ height: DESKTOP_HEADER_HEIGHT }} aria-hidden="true" />
 
       {open && (
         <div className="fixed inset-0 z-40 lg:hidden bg-brand-dark/98 pt-28 px-5">

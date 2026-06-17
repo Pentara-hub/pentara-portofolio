@@ -243,6 +243,11 @@
 }
 @media (min-width: 768px) { .container-main { padding-inline: 2rem; } }
 
+@media (min-width: 1024px) {
+  section[id] { scroll-margin-top: 6.75rem; }
+  html.header-scrolled section[id] { scroll-margin-top: 4.5rem; }
+}
+
 /* Horizontal scroll row — mobile carousels */
 .scroll-row {
   display: flex;
