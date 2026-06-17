@@ -1,5 +1,13 @@
 export const DEFAULT_SLUG = "Aklemy";
 
+export function resolveCase(slug) {
+  if (!slug) return { data: CASES[DEFAULT_SLUG], slug: DEFAULT_SLUG };
+  if (CASES[slug]) return { data: CASES[slug], slug };
+  const key = Object.keys(CASES).find((k) => k.toLowerCase() === slug.toLowerCase());
+  if (key) return { data: CASES[key], slug: key };
+  return { data: CASES[DEFAULT_SLUG], slug: DEFAULT_SLUG };
+}
+
 export const CASES = {
   Aklemy: {
     title: "Aklemy",

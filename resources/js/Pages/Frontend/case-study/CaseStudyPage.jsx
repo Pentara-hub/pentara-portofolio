@@ -62,11 +62,13 @@ export default function CaseStudyPage() {
               </div>
             </aside>
           </div>
-          {(cs.related || []).length > 0 && (
+          {(cs.related || []).filter((sl) => sl.toLowerCase() !== slug).length > 0 && (
             <section className="mt-16">
               <h2 className="text-xl font-bold text-white mb-6 reveal-up">More Work</h2>
-              <div className="grid md:grid-cols-3 gap-5">
-                {cs.related.map((sl, i) => <RelatedCard key={sl} slug={sl} className={i ? `reveal-up-delay-${i}` : "reveal-up"} />)}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5">
+                {cs.related
+                  .filter((sl) => sl.toLowerCase() !== slug)
+                  .map((sl, i) => <RelatedCard key={sl} slug={sl} className={i ? `reveal-up-delay-${i}` : "reveal-up"} />)}
               </div>
             </section>
           )}

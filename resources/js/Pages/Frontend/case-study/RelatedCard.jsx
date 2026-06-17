@@ -1,21 +1,35 @@
 import { Link } from "react-router-dom";
 import Badge from "../../../components/ui/Badge";
-import { CASES, DEFAULT_SLUG } from "./cases";
+import { resolveCase } from "./cases";
 
-const ICONS = { default: "fas fa-layer-group", Aklemy: "fas fa-graduation-cap", misteral: "fas fa-notes-medical", fairwheels: "fas fa-car", habittracker: "fas fa-calendar-check", mymap: "fas fa-map-marker-alt" };
+const ICONS = {
+  default: "fas fa-layer-group",
+  aklemy: "fas fa-graduation-cap",
+  misteral: "fas fa-notes-medical",
+  fairwheels: "fas fa-car",
+  habittracker: "fas fa-calendar-check",
+  mymap: "fas fa-map-marker-alt",
+  schedulepro: "fas fa-calendar-alt",
+};
 
 export default function RelatedCard({ slug, className = "" }) {
-  const it = CASES[slug] || CASES[DEFAULT_SLUG];
+  const { data: it, slug: canonicalSlug } = resolveCase(slug);
   const tags = it?.stack || it?.tags || [];
+  const icon = ICONS[canonicalSlug.toLowerCase()] || ICONS.default;
+
   return (
-    <Link to={`/case-study/${slug}`} className={`project-card group block ${className}`}>
-      <div className="h-32 bg-white/[0.03] flex items-center justify-center border-b border-white/[0.06]">
-        <i className={`${ICONS[slug] || ICONS.default} text-accent/40 text-3xl group-hover:text-accent/70 transition-colors`} />
+    <Link to={`/case-study/${canonicalSlug}`} className={`related-work-card group ${className}`}>
+      <div className="related-work-card-icon" aria-hidden="true">
+        <i className={`${icon} related-work-card-icon-glyph`} />
       </div>
-      <div className="p-5">
-        <h3 className="font-bold text-fg">{it?.title}</h3>
-        <p className="text-sm text-muted mt-1 line-clamp-2">{it?.subtitle}</p>
-        {tags.length > 0 && <div className="mt-3 flex flex-wrap gap-1.5">{tags.slice(0, 3).map((t) => <Badge key={t}>{t}</Badge>)}</div>}
+      <div className="related-work-card-body">
+        <h3 className="related-work-card-title">{it?.title}</h3>
+        <p className="related-work-card-subtitle">{it?.subtitle}</p>
+        {tags.length > 0 && (
+          <div className="related-work-card-tags">
+            {tags.slice(0, 3).map((t) => <Badge key={t}>{t}</Badge>)}
+          </div>
+        )}
       </div>
     </Link>
   );

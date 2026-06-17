@@ -58,7 +58,7 @@ export default function Portfolio() {
 
 function ProjectCard({ p, delay }) {
   const inner = (
-    <div className={`project-card reveal-up${delay ? `-delay-${delay}` : ""}`}>
+    <div className={`surface-card overflow-hidden reveal-up${delay ? `-delay-${delay}` : ""}`}>
       <div className="grid md:grid-cols-2 gap-0">
         <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
           <Badge variant="count">{p.products} Products</Badge>
