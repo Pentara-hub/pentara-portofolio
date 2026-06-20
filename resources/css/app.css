@@ -46,12 +46,12 @@
 .cursor-glow-primary,
 .cursor-glow-secondary {
   position: absolute;
-  inset: -20%;
+  inset: 0;
   will-change: background;
 }
 .cursor-glow-primary {
   background: radial-gradient(
-    ellipse 42vw 38vh at var(--glow-x, 50%) var(--glow-y, 50%),
+    circle 34vmin at var(--glow-x, 50%) var(--glow-y, 50%),
     rgba(91, 184, 255, 0.11) 0%,
     rgba(61, 143, 217, 0.04) 40%,
     transparent 72%
@@ -59,7 +59,7 @@
 }
 .cursor-glow-secondary {
   background: radial-gradient(
-    ellipse 55vw 48vh at var(--glow-x2, 50%) var(--glow-y2, 50%),
+    circle 44vmin at var(--glow-x2, 50%) var(--glow-y2, 50%),
     rgba(30, 74, 110, 0.16) 0%,
     rgba(22, 50, 83, 0.06) 45%,
     transparent 75%
@@ -537,30 +537,15 @@
   color: rgba(255,255,255,0.18);
   font-size: 3rem;
 }
-.project-carousel-track .project-card-ext {
-  position: absolute;
-  top: 0.875rem;
-  right: 0.875rem;
-  z-index: 3;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255,255,255,0.32);
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
+.project-carousel-track .project-card-visual-link {
   text-decoration: none;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  color: inherit;
+  cursor: pointer;
+  transition: filter 0.25s;
 }
-.project-carousel-track .project-card-ext:hover {
-  border-color: var(--neon);
-  background: var(--neon);
-  color: #163253;
+.project-carousel-track .project-card.is-active .project-card-visual-link:hover {
+  filter: brightness(1.06);
 }
-
 .project-carousel-track .project-card-overlay {
   flex: 1;
   min-width: 0;

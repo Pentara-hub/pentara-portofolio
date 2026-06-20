@@ -4,30 +4,31 @@ import { PROJECTS } from "../../../data/pentaraData";
 import Button from "../../../components/ui/Button";
 import { buildLoopedProjects, useProjectCarousel } from "../../../hooks/useProjectCarousel";
 
-function ProjectCard({ project, cardRef, onSelect }) {
+function ProjectCard({ project, cardRef, onSelect, suppressClickRef }) {
   return (
     <article
       ref={cardRef}
       className="project-card"
       onClick={(e) => { if (!e.target.closest("a")) onSelect(); }}
     >
-      <div className="project-card-visual" style={{ background: project.gradient }}>
+      <Link
+        to={`/case-study/${project.slug}`}
+        className="project-card-visual project-card-visual-link"
+        style={{ background: project.gradient }}
+        aria-label={`View ${project.title} case study`}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (suppressClickRef?.current) e.preventDefault();
+        }}
+      >
         {project.image ? (
-          <img src={project.image} alt={project.title} className="project-card-img" loading="lazy" />
+          <img src={project.image} alt="" className="project-card-img" loading="lazy" />
         ) : (
           <div className="project-card-fallback">
             <i className={`fas ${project.icon}`} />
           </div>
         )}
-        <Link
-          to={`/case-study/${project.slug}`}
-          aria-label={`Visit ${project.title}`}
-          className="project-card-ext"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <i className="fas fa-arrow-up-right text-xs" />
-        </Link>
-      </div>
+      </Link>
       <div className="project-card-overlay">
         <div className="project-card-meta">
           <span className="project-card-category">{project.category}</span>
@@ -51,6 +52,7 @@ export default function ProjectsShowcase() {
     prev,
     goTo,
     selectCard,
+    suppressClickRef,
   } = useProjectCarousel(PROJECTS.length, headLen);
 
   return (
@@ -88,6 +90,7 @@ export default function ProjectsShowcase() {
               project={p}
               cardRef={(el) => { cardRefs.current[i] = el; }}
               onSelect={() => selectCard(i)}
+              suppressClickRef={suppressClickRef}
             />
           ))}
         </div>

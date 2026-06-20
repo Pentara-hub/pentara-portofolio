@@ -7,16 +7,44 @@ import useTilt from "../../../hooks/useTilt";
 
 const selectStyles = {
   control: (base, s) => ({
-    ...base, backgroundColor: "rgba(255,255,255,0.06)",
+    ...base,
+    backgroundColor: "rgba(255,255,255,0.06)",
     border: `1px solid ${s.isFocused ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.12)"}`,
-    borderRadius: "0.75rem", padding: "2px", minHeight: "48px", boxShadow: "none",
+    borderRadius: "0.75rem",
+    padding: "2px",
+    minHeight: "48px",
+    boxShadow: "none",
+    cursor: "pointer",
   }),
-  menu: (base) => ({ ...base, backgroundColor: "#163253", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "0.75rem" }),
-  option: (base, s) => ({ ...base, backgroundColor: s.isFocused ? "rgba(255,255,255,0.1)" : "transparent", color: "#fff" }),
+  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+  menu: (base) => ({
+    ...base,
+    backgroundColor: "#163253",
+    border: "1px solid rgba(255,255,255,0.12)",
+    borderRadius: "0.75rem",
+    boxShadow: "0 16px 48px rgba(0,0,0,0.45)",
+    overflow: "hidden",
+    marginTop: 4,
+  }),
+  menuList: (base) => ({ ...base, padding: "4px" }),
+  option: (base, s) => ({
+    ...base,
+    backgroundColor: s.isSelected
+      ? "rgba(91,184,255,0.22)"
+      : s.isFocused
+        ? "rgba(91,184,255,0.12)"
+        : "#163253",
+    color: "#fff",
+    borderRadius: "0.5rem",
+    cursor: "pointer",
+  }),
   singleValue: (base) => ({ ...base, color: "#fff" }),
   placeholder: (base) => ({ ...base, color: "rgba(255,255,255,0.35)" }),
+  dropdownIndicator: (base) => ({ ...base, color: "rgba(255,255,255,0.45)" }),
   indicatorSeparator: () => ({ display: "none" }),
 };
+
+const menuPortalTarget = typeof document !== "undefined" ? document.body : null;
 
 export default function Contact() {
   const [projectType, setProjectType] = useState("");
@@ -89,7 +117,16 @@ export default function Contact() {
               </div>
               <input name="company" className="input relative z-[1]" placeholder="Company (optional)" />
               <div className="relative z-[1]">
-                <Select options={projectTypes} value={projectTypes.find((p) => p.value === projectType) || null} onChange={(o) => setProjectType(o?.value ?? "")} placeholder="Project type" isSearchable={false} styles={selectStyles} />
+                <Select
+                  options={projectTypes}
+                  value={projectTypes.find((p) => p.value === projectType) || null}
+                  onChange={(o) => setProjectType(o?.value ?? "")}
+                  placeholder="Project type"
+                  isSearchable={false}
+                  styles={selectStyles}
+                  menuPortalTarget={menuPortalTarget}
+                  menuPosition="fixed"
+                />
               </div>
               {projectType === "Other" && <input name="otherProjectType" className="input relative z-[1]" placeholder="Specify" />}
               <textarea name="message" rows={4} className="input resize-none relative z-[1]" placeholder="What's the product? Where are you in the journey? What does success look like in 90 days?" />

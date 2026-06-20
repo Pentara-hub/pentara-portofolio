@@ -203,11 +203,13 @@ export function useProjectCarousel(count, headLen = count - 1) {
     prev,
     goTo,
     selectCard,
+    suppressClickRef: ignoreClickRef,
   };
 }
 
 export function buildLoopedProjects(projects) {
-  const head = [...projects].reverse().slice(0, -1).map((p, i) => ({ ...p, _key: `pre-${p.slug}-${i}` }));
+  // Prepend items after the first so the slide before middle[0] is the last project (wrap-around).
+  const head = projects.slice(1).map((p, i) => ({ ...p, _key: `pre-${p.slug}-${i}` }));
   const middle = projects.map((p, i) => ({ ...p, _key: `mid-${p.slug}-${i}` }));
   const tail = projects.map((p, i) => ({ ...p, _key: `post-${p.slug}-${i}` }));
   return { slides: [...head, ...middle, ...tail], headLen: head.length };
