@@ -12,18 +12,27 @@ export default function ScrollToTop() {
       return 80;
     };
 
-    // If there's a hash, scroll to that element with an offset (for fixed header)
+    const scrollToHash = () => {
+      if (!hash) return false;
+      const el = document.getElementById(hash.slice(1));
+      if (!el) return false;
+      const y = el.getBoundingClientRect().top + window.scrollY - getOffset();
+      window.scrollTo({ top: y, behavior: "smooth" });
+      return true;
+    };
+
     if (hash) {
-      const id = hash.slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - getOffset();
-        window.scrollTo({ top: y, behavior: "smooth" });
-        return;
-      }
+      if (scrollToHash()) return undefined;
+
+      const delays = [0, 50, 150, 350];
+      const timers = delays.map((ms) =>
+        window.setTimeout(() => scrollToHash(), ms),
+      );
+      return () => timers.forEach(clearTimeout);
     }
-    // Otherwise, just go to top on route change
+
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    return undefined;
   }, [pathname, hash, key]);
 
   return null;

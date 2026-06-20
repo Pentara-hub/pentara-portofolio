@@ -3,15 +3,35 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 
 const nav = [
-  { label: "How We Build", hash: "how-we-build" },
-  { label: "What We Build", hash: "what-we-build" },
-  { label: "Work", hash: "work" },
-  { label: "Team", hash: "team" },
-  { label: "Contact", hash: "contact" },
+  { label: "Home", path: "/" },
+  { label: "How We Build", path: "/#how-we-build" },
+  { label: "What We Build", path: "/#what-we-build" },
+  { label: "Work", path: "/#work" },
+  { label: "Team", path: "/#team" },
+  { label: "Contact", path: "/#contact" },
 ];
 
 const DESKTOP_HEADER_HEIGHT = "6.75rem"; // announcement bar + nav (lg)
 const SCROLL_THRESHOLD = 24;
+
+function NavLink({ item, className, onNavigate }) {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const handleClick = (e) => {
+    onNavigate?.();
+    if (item.path === "/" && isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <Link to={item.path} className={className} onClick={handleClick}>
+      {item.label}
+    </Link>
+  );
+}
 
 export default function Header({ onContact }) {
   const [open, setOpen] = React.useState(false);
@@ -36,6 +56,10 @@ export default function Header({ onContact }) {
     return () => document.documentElement.classList.remove("header-scrolled");
   }, [scrolled]);
 
+  const closeMenu = () => setOpen(false);
+  const desktopLinkClass = "px-3 xl:px-4 py-2 text-sm text-white/60 hover:text-white transition-colors hover:-translate-y-0.5 duration-200 whitespace-nowrap";
+  const mobileLinkClass = "block px-4 py-3 rounded-xl text-white/70 hover:text-white font-medium text-lg";
+
   return (
     <>
       <div className="lg:fixed lg:top-0 lg:inset-x-0 lg:z-50 w-full">
@@ -49,7 +73,7 @@ export default function Header({ onContact }) {
                 <strong className="text-white">Pentara</strong>
                 <span className="hidden md:inline"> — Web & mobile engineering · You bring the idea, we handle the rest · </span>
                 <span className="md:hidden"> — </span>
-                <a href="#contact" className="underline hover:text-white transition-colors whitespace-nowrap">Book a free consultation →</a>
+                <Link to="/#contact" className="underline hover:text-white transition-colors whitespace-nowrap">Book a free consultation →</Link>
               </span>
             </div>
           </div>
@@ -57,7 +81,7 @@ export default function Header({ onContact }) {
 
         <header className="sticky top-0 lg:static z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/[0.06]">
           <div className="container-main">
-            <div className="flex items-center justify-between h-14 sm:h-[4.5rem] gap-3">
+            <div className="flex items-center justify-between h-14 sm:h-[4.5rem] gap-2 sm:gap-3">
             <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0 group">
               <img src="/images/logo.png" alt="Pentara" className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform group-hover:scale-110" />
               <div className="min-w-0">
@@ -66,19 +90,17 @@ export default function Header({ onContact }) {
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 min-w-0">
               {nav.map((n) => (
-                <a key={n.hash} href={`#${n.hash}`} className="px-4 py-2 text-sm text-white/60 hover:text-white transition-colors hover:-translate-y-0.5 duration-200">
-                  {n.label}
-                </a>
+                <NavLink key={n.path} item={n} className={desktopLinkClass} />
               ))}
             </nav>
 
-            <div className="hidden lg:block">
+            <div className="hidden lg:block shrink-0">
               <Button variant="neon" size="sm" onClick={onContact}>Book a Free Consultation</Button>
             </div>
 
-            <button onClick={() => setOpen((o) => !o)} className="lg:hidden w-11 h-11 rounded-xl border border-white/20 flex items-center justify-center text-white" aria-label="Menu">
+            <button onClick={() => setOpen((o) => !o)} className="lg:hidden w-11 h-11 rounded-xl border border-white/20 flex items-center justify-center text-white shrink-0" aria-label="Menu" aria-expanded={open}>
               <i className={`fas ${open ? "fa-times" : "fa-bars"} text-sm`} />
             </button>
             </div>
@@ -90,12 +112,12 @@ export default function Header({ onContact }) {
       <div className="hidden lg:block shrink-0" style={{ height: DESKTOP_HEADER_HEIGHT }} aria-hidden="true" />
 
       {open && (
-        <div className="fixed inset-0 z-40 lg:hidden bg-brand-dark/98 pt-28 px-5">
+        <div className="fixed inset-0 z-40 lg:hidden bg-brand-dark/98 pt-28 px-5 pb-8 overflow-y-auto">
           <div className="space-y-2">
             {nav.map((n) => (
-              <a key={n.hash} href={`#${n.hash}`} onClick={() => setOpen(false)} className="block px-4 py-3 rounded-xl text-white/70 hover:text-white font-medium text-lg">{n.label}</a>
+              <NavLink key={n.path} item={n} className={mobileLinkClass} onNavigate={closeMenu} />
             ))}
-            <Button className="w-full mt-4" variant="neon" onClick={() => { setOpen(false); onContact?.(); }}>Book a Free Consultation</Button>
+            <Button className="w-full mt-4" variant="neon" onClick={() => { closeMenu(); onContact?.(); }}>Book a Free Consultation</Button>
           </div>
         </div>
       )}

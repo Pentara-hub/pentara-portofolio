@@ -24,7 +24,7 @@ export default function Footer() {
               <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-white/50">
                 {["Web Development", "Cloud & DevOps", "Mobile", "UI/UX", "QA"].map((s) => (
-                  <li key={s}><a href="#what-we-build" className="hover:text-white transition-colors">{s}</a></li>
+                  <li key={s}><Link to="/#what-we-build" className="hover:text-white transition-colors">{s}</Link></li>
                 ))}
               </ul>
             </div>
@@ -32,7 +32,7 @@ export default function Footer() {
               <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-white/50">
                 {[{ l: "How We Build", h: "how-we-build" }, { l: "Work", h: "work" }, { l: "Team", h: "team" }, { l: "Contact", h: "contact" }].map((i) => (
-                  <li key={i.h}><a href={`#${i.h}`} className="hover:text-white transition-colors">{i.l}</a></li>
+                  <li key={i.h}><Link to={`/#${i.h}`} className="hover:text-white transition-colors">{i.l}</Link></li>
                 ))}
               </ul>
             </div>
